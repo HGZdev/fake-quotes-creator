@@ -1,0 +1,123 @@
+// Reset CSS:
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 0;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+body {
+  line-height: 1;
+  background-color: #4F8551;
+  color: white;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: auto;
+}
+// Global grid settings
+$cols: 12;
+$width-base: (100%/$cols);
+
+* {
+  // border: 1px solid red;
+}
+
+.container {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+[class*='col-'] {
+  width: 100%;
+  min-height: 1px;
+}
+// SMARTPHONE MEDIUM (min 480px)
+@media only screen and (min-width: 480px) {
+   @for $i from 1 through $cols{
+    .col-#{$i} {
+      width: $width-base * $i;
+    }
+  }
+}
+// Sections
+
+.title {
+  padding: 1rem 0;
+
+  h1 {
+    font-size: 3rem;
+  }
+}
+
+.subtitle {
+  padding: 1rem 0;
+
+  h2 {
+    font-size: 1.8rem;
+  }
+}
+
+form {
+  padding: 3rem 0;
+
+  span{
+    padding: 0.5rem 0;
+    display: block;
+  }
+  .inner > div {
+    flex-grow: 1;
+    padding: 0.3rem;
+
+    button,
+    select {
+      width: 100%;
+      height: 2rem;
+    }
+  }
+}
+
+section.board {
+  .row {
+    border: antiquewhite 2px solid;
+
+    .quote p {
+      padding: 1rem;
+      line-height: 1.5rem;
+
+      span {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+    }
+
+    .author h3 {
+      padding: 1rem;
+      font-weight: bold;
+      text-align: right;
+    }
+  }
+}

@@ -10,25 +10,26 @@ class FakeQuotesCreator extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      topicsList: this.props.topics,
+      topicsList: this.props.topics, // zaciąganie baz danych
       quotesList: this.props.quotes,
       authorsList: this.props.authors,
       themesList: this.props.themes,
 
-      topicSelected: "0",
-      quoteSelected: "0",
-      authorSelected: "0",
-      themeSelected: "0",
+      topicsSelected: 0, // stany na polach select
+      quotesSelected: 0,
+      authorsSelected: 0,
+      themesSelected: 0,
 
-      quoteDisplay: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      authorDisplay: "Marek Tulliusz Cyceron",
-      themeDisplay: {
-        name: "",
-        color: "#FFFFFF",
-        backgroundColor: "#252387"
+      quotesDisplay: "Wybierz cytat", // wartości wyświetlane w Board
+      authorsDisplay: "Wybierz autora",
+      themesDisplay: {
+        name: "Początkowy - Biały",
+        color: "black",
+        backgroundColor: "white"
       }
     }
   }
+
   render() {
     return (
       <div>
@@ -42,10 +43,12 @@ class FakeQuotesCreator extends React.Component {
               <form className="col-12" action="index.html" method="post" onSubmit={this.state.handleSubmit}>
 
                 <div className="row inner">
-                  <Select className="topicsList" label="Tematyka:" value={this.state.topicSelected} list={this.state.topicsList} onChange={this.handleSelectChange}/>
-                  <Select className="quotesList" label="Cytaty:" value={this.state.quoteSelected} list={this.state.quotesList} onChange={this.handleSelectChange}/>
-                  <Select className="authorsList" label="Autorzy:" value={this.state.authorSelected} list={this.state.authorsList} onChange={this.handleSelectChange}/>
-                  <Select className="themesList" label="Szablony:" value={this.state.themeSelected} list={this.state.themesList} onChange={this.handleSelectChange}/>
+                  <Select className="topics" label="Tematyka:" value={this.state.topicsSelected} list={this.state.topicsList} onChange={this.handleSelectChange}/>
+                  <Select className="quotes" label="Cytaty:" value={this.state.quotesSelected} list={this.state.quotesList} onChange={this.handleSelectChange}/>
+                  <Select className="authors" label="Autorzy:" value={this.state.authorsSelected} list={this.state.authorsList} onChange={this.handleSelectChange}/>
+
+                  <Select className="themes" label="Szablony:" value={this.state.themesSelected} list={this.state.themesList} onChange={this.handleSelectChange}/>
+
                   <RandomBtn onClick={this.handleClick}/>
                 </div>
 
@@ -54,7 +57,7 @@ class FakeQuotesCreator extends React.Component {
             </div>
           </div>
         </section>
-        <Board quoteDisplay={this.state.quoteDisplay} authorDisplay={this.state.authorDisplay} themeDisplay={this.state.themeDisplay}/>
+        <Board quotesDisplay={this.state.quotesDisplay} authorsDisplay={this.state.authorsDisplay} themesDisplay={this.state.themesDisplay}/>
       </div>
     );
   }
@@ -63,37 +66,73 @@ class FakeQuotesCreator extends React.Component {
     event.preventDefault();
   }
 
-  handleSelectChange = (value) => {
+  handleSelectChange = (value, className) => {
+    console.log("change!");
+    console.log("value: " + value, "className: " + className);
+
+    let selected = className + "Selected";
+    let display = className + "Display";
+    let list = className + "List";
+
     let newState = {
-      themeSelected: event.target.value,
-      themeDisplay: this.state.themesList[event.target.value]
+      [selected]: event.target.value,
+      [display]: this.state.themesList[value]
     }
+    console.log(newState);
     this.setState(newState);
   }
 }
 
 class Select extends React.Component {
+
+  // info o formularzach kontrolowanych
+  // https://facebook.github.io/react/docs/forms.html
+
   helper = () => {
-    this.props.onChange(this.props.value)
+    return this.props.onChange(this.props.value, this.props.className);
   }
+
   render() {
-      let list;
-    if (this.props.className === "themesList") {
-      list = this.props.list.map((el, idx) => {
+    let list;
+    list = this.props.list.map((el, idx) => {
+      if (el.name) {
         return <option key={idx} value={idx}>{el.name}</option>
-      });
-    } else {
-      list = this.props.list.map((el, idx) => {
+      } else {
         return <option key={idx} value={idx}>{el}</option>
-      });
-    }
+      }
+    });
+
     return (
       <div className="col-2">
         <span>{this.props.label}</span>
-        <select className={this.props.className} name={this.props.className} value={this.props.value} onClick={this.helper}>
+        <select className={this.props.className} name={this.props.className} value={this.props.value} onChange={this.helper}>
           {list}
         </select>
       </div>
+    );
+  }
+}
+
+class Board extends React.Component {
+
+  render() {
+    return (
+      <section className="board">
+        <div className="container">
+          <div className="row outer" style={this.props.themesDisplay}>
+            <div className="col-12 quote">
+              <p>
+                <span>"</span>
+                {this.props.quotesDisplay}
+                <span>"</span>
+              </p>
+            </div>
+            <div className="col-12 author">
+              <h3>{this.props.authorsDisplay}</h3>
+            </div>
+          </div>
+        </div>
+      </section>
     );
   }
 }
@@ -120,33 +159,11 @@ class Header extends React.Component {
   }
 }
 
-class Board extends React.Component {
 
-  render() {
-    return (
-      <section className="board">
-        <div className="container">
-          <div className="row outer" style={this.props.themeDisplay}>
-            <div className="col-12 quote">
-              <p>
-                <span>"</span>
-                {this.props.quoteDisplay}
-                <span>"</span>
-              </p>
-            </div>
-            <div className="col-12 author">
-              <h3>{this.props.authorDisplay}</h3>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
-}
 
 document.addEventListener('DOMContentLoaded', function () {
 
-  const title = "Kreator Fałszywych Cytatów";
+  const title = "Kreator Zmyślonych Cytatów";
   const subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste";
 
   ReactDOM.render(

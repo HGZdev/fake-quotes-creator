@@ -9772,6 +9772,8 @@ var _themes = __webpack_require__(85);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -9790,31 +9792,38 @@ var FakeQuotesCreator = function (_React$Component) {
       event.preventDefault();
     };
 
-    _this.handleSelectChange = function (value) {
-      var newState = {
-        themeSelected: event.target.value,
-        themeDisplay: _this.state.themesList[event.target.value]
-      };
+    _this.handleSelectChange = function (value, className) {
+      var _newState;
+
+      console.log("change!");
+      console.log("value: " + value, "className: " + className);
+
+      var selected = className + "Selected";
+      var display = className + "Display";
+      var list = className + "List";
+
+      var newState = (_newState = {}, _defineProperty(_newState, selected, event.target.value), _defineProperty(_newState, display, _this.state.themesList[value]), _newState);
+      console.log(newState);
       _this.setState(newState);
     };
 
     _this.state = {
-      topicsList: _this.props.topics,
+      topicsList: _this.props.topics, // zaciąganie baz danych
       quotesList: _this.props.quotes,
       authorsList: _this.props.authors,
       themesList: _this.props.themes,
 
-      topicSelected: "0",
-      quoteSelected: "0",
-      authorSelected: "0",
-      themeSelected: "0",
+      topicsSelected: 0, // stany na polach select
+      quotesSelected: 0,
+      authorsSelected: 0,
+      themesSelected: 0,
 
-      quoteDisplay: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-      authorDisplay: "Marek Tulliusz Cyceron",
-      themeDisplay: {
-        name: "",
-        color: "#FFFFFF",
-        backgroundColor: "#252387"
+      quotesDisplay: "Wybierz cytat", // wartości wyświetlane w Board
+      authorsDisplay: "Wybierz autora",
+      themesDisplay: {
+        name: "Początkowy - Biały",
+        color: "black",
+        backgroundColor: "white"
       }
     };
     return _this;
@@ -9843,17 +9852,17 @@ var FakeQuotesCreator = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'row inner' },
-                  _react2.default.createElement(Select, { className: 'topicsList', label: 'Tematyka:', value: this.state.topicSelected, list: this.state.topicsList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(Select, { className: 'quotesList', label: 'Cytaty:', value: this.state.quoteSelected, list: this.state.quotesList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(Select, { className: 'authorsList', label: 'Autorzy:', value: this.state.authorSelected, list: this.state.authorsList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(Select, { className: 'themesList', label: 'Szablony:', value: this.state.themeSelected, list: this.state.themesList, onChange: this.handleSelectChange }),
+                  _react2.default.createElement(Select, { className: 'topics', label: 'Tematyka:', value: this.state.topicsSelected, list: this.state.topicsList, onChange: this.handleSelectChange }),
+                  _react2.default.createElement(Select, { className: 'quotes', label: 'Cytaty:', value: this.state.quotesSelected, list: this.state.quotesList, onChange: this.handleSelectChange }),
+                  _react2.default.createElement(Select, { className: 'authors', label: 'Autorzy:', value: this.state.authorsSelected, list: this.state.authorsList, onChange: this.handleSelectChange }),
+                  _react2.default.createElement(Select, { className: 'themes', label: 'Szablony:', value: this.state.themesSelected, list: this.state.themesList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(RandomBtn, { onClick: this.handleClick })
                 )
               )
             )
           )
         ),
-        _react2.default.createElement(Board, { quoteDisplay: this.state.quoteDisplay, authorDisplay: this.state.authorDisplay, themeDisplay: this.state.themeDisplay })
+        _react2.default.createElement(Board, { quotesDisplay: this.state.quotesDisplay, authorsDisplay: this.state.authorsDisplay, themesDisplay: this.state.themesDisplay })
       );
     }
   }]);
@@ -9876,31 +9885,33 @@ var Select = function (_React$Component2) {
     }
 
     return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Select.__proto__ || Object.getPrototypeOf(Select)).call.apply(_ref, [this].concat(args))), _this2), _this2.helper = function () {
-      _this2.props.onChange(_this2.props.value);
+      return _this2.props.onChange(_this2.props.value, _this2.props.className);
     }, _temp), _possibleConstructorReturn(_this2, _ret);
   }
+
+  // info o formularzach kontrolowanych
+  // https://facebook.github.io/react/docs/forms.html
 
   _createClass(Select, [{
     key: 'render',
     value: function render() {
       var list = void 0;
-      if (this.props.className === "themesList") {
-        list = this.props.list.map(function (el, idx) {
+      list = this.props.list.map(function (el, idx) {
+        if (el.name) {
           return _react2.default.createElement(
             'option',
             { key: idx, value: idx },
             el.name
           );
-        });
-      } else {
-        list = this.props.list.map(function (el, idx) {
+        } else {
           return _react2.default.createElement(
             'option',
             { key: idx, value: idx },
             el
           );
-        });
-      }
+        }
+      });
+
       return _react2.default.createElement(
         'div',
         { className: 'col-2' },
@@ -9911,7 +9922,7 @@ var Select = function (_React$Component2) {
         ),
         _react2.default.createElement(
           'select',
-          { className: this.props.className, name: this.props.className, value: this.props.value, onClick: this.helper },
+          { className: this.props.className, name: this.props.className, value: this.props.value, onChange: this.helper },
           list
         )
       );
@@ -9921,8 +9932,66 @@ var Select = function (_React$Component2) {
   return Select;
 }(_react2.default.Component);
 
-var RandomBtn = function (_React$Component3) {
-  _inherits(RandomBtn, _React$Component3);
+var Board = function (_React$Component3) {
+  _inherits(Board, _React$Component3);
+
+  function Board() {
+    _classCallCheck(this, Board);
+
+    return _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).apply(this, arguments));
+  }
+
+  _createClass(Board, [{
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'section',
+        { className: 'board' },
+        _react2.default.createElement(
+          'div',
+          { className: 'container' },
+          _react2.default.createElement(
+            'div',
+            { className: 'row outer', style: this.props.themesDisplay },
+            _react2.default.createElement(
+              'div',
+              { className: 'col-12 quote' },
+              _react2.default.createElement(
+                'p',
+                null,
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  '"'
+                ),
+                this.props.quotesDisplay,
+                _react2.default.createElement(
+                  'span',
+                  null,
+                  '"'
+                )
+              )
+            ),
+            _react2.default.createElement(
+              'div',
+              { className: 'col-12 author' },
+              _react2.default.createElement(
+                'h3',
+                null,
+                this.props.authorsDisplay
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Board;
+}(_react2.default.Component);
+
+var RandomBtn = function (_React$Component4) {
+  _inherits(RandomBtn, _React$Component4);
 
   function RandomBtn() {
     _classCallCheck(this, RandomBtn);
@@ -9953,8 +10022,8 @@ var RandomBtn = function (_React$Component3) {
   return RandomBtn;
 }(_react2.default.Component);
 
-var Header = function (_React$Component4) {
-  _inherits(Header, _React$Component4);
+var Header = function (_React$Component5) {
+  _inherits(Header, _React$Component5);
 
   function Header() {
     _classCallCheck(this, Header);
@@ -9980,67 +10049,9 @@ var Header = function (_React$Component4) {
   return Header;
 }(_react2.default.Component);
 
-var Board = function (_React$Component5) {
-  _inherits(Board, _React$Component5);
-
-  function Board() {
-    _classCallCheck(this, Board);
-
-    return _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).apply(this, arguments));
-  }
-
-  _createClass(Board, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'section',
-        { className: 'board' },
-        _react2.default.createElement(
-          'div',
-          { className: 'container' },
-          _react2.default.createElement(
-            'div',
-            { className: 'row outer', style: this.props.themeDisplay },
-            _react2.default.createElement(
-              'div',
-              { className: 'col-12 quote' },
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  '"'
-                ),
-                this.props.quoteDisplay,
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  '"'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'col-12 author' },
-              _react2.default.createElement(
-                'h3',
-                null,
-                this.props.authorDisplay
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Board;
-}(_react2.default.Component);
-
 document.addEventListener('DOMContentLoaded', function () {
 
-  var title = "Kreator Fałszywych Cytatów";
+  var title = "Kreator Zmyślonych Cytatów";
   var subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste";
 
   _reactDom2.default.render(_react2.default.createElement(FakeQuotesCreator, { title: title, subtitle: subtitle, topics: _topics.topics, quotes: _quotes.quotes, authors: _authors.authors, themes: _themes.themes }), document.getElementById('app'));
@@ -10523,7 +10534,7 @@ document.addEventListener('DOMContentLoaded', function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var authors = ["[domyślny]", "I. Kant", "Jan Paweł II", "Konfucjusz", "P. Coelho"];
+var authors = ["[domyślny]", "Marek Tulliusz Cyceron", "I. Kant", "Jan Paweł II", "Konfucjusz", "P. Coelho"];
 
 exports.authors = authors;
 
@@ -10537,7 +10548,7 @@ exports.authors = authors;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var quotes = ["[domyślny]", "Nie wszystko złoto, co się świeci.", "Głupota ludzka jest nieskończona.", "Niebo gwieździste nade mną, prawo moralne we mnie.", "Kochaj bliźniego swego, jak siebie samego."];
+var quotes = ["[domyślny]", "Nie wszystko złoto, co się świeci.", "Głupota ludzka jest nieskończona.", "Niebo gwieździste nade mną, prawo moralne we mnie.", "Kochaj bliźniego swego, jak siebie samego.", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."];
 
 // const quotes = {
 //   dobro: ["Szukaj dobra w ludziach.", "Na końcu będzie dobro.", "Kto sieje dobro, zbiera dobro."],
@@ -10572,17 +10583,17 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var themes = [{
-  name: "[domyślny]",
+  name: "Niebieski",
   color: "#FFFFFF",
-  backgroundColor: "#252387"
+  backgroundColor: "#3633D6"
 }, {
-  name: "Niebiański",
-  color: "#FFFFFF",
-  backgroundColor: "#9594D5"
-}, {
-  name: "Las",
-  color: "#E4802E",
+  name: "Zielony",
+  color: "#D7A23B",
   backgroundColor: "#358524"
+}, {
+  name: "Czarny",
+  color: "#FFFFFF",
+  backgroundColor: "#000000"
 }];
 
 exports.themes = themes;

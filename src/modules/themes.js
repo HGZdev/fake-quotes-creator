@@ -1,18 +1,18 @@
 const themes = [
   {
-    name: "[domyślny]",
+    name: "Niebieski",
     color: "#FFFFFF",
-    backgroundColor: "#252387"
+    backgroundColor: "#3633D6"
   },
   {
-    name: "Niebiański",
-    color: "#FFFFFF",
-    backgroundColor: "#9594D5"
-  },
-  {
-    name: "Las",
-    color: "#E4802E",
+    name: "Zielony",
+    color: "#D7A23B",
     backgroundColor: "#358524"
+  },
+  {
+    name: "Czarny",
+    color: "#FFFFFF",
+    backgroundColor: "#000000"
   }
 ]
 

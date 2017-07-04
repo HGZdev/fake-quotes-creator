@@ -1,3 +1,3 @@
-const topics = ["[domyślny]", "Szczęście", "Miłosć", "Sens życia", "Rozum", "Dobro"];
+const topics = ["[Wybierz tematykę...]", "Szczęście", "Miłosć", "Sens życia", "Rozum", "Dobro"];
 
 export { topics };

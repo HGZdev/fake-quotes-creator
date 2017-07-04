@@ -1,4 +1,12 @@
-const themes = [
+const themes = [{
+    name: "[Wybierz szablon...]",
+    color: "",
+    backgroundColor: ""
+  }, {
+    name: "Biały",
+    color: "#000000",
+    backgroundColor: "#FFFFFF"
+  },
   {
     name: "Niebieski",
     color: "#FFFFFF",
@@ -16,4 +24,4 @@ const themes = [
   }
 ]
 
-export {themes};
+export { themes };

@@ -17,8 +17,13 @@
 
 body {
   line-height: 1;
-  background-color: #4F8551;
-  color: white;
+  background-color: black;
+  color: #CFBB75;
+  // font-family: 'Shadows Into Light Two', cursive;
+  // font-family: 'Courgette', cursive;
+  // font-family: 'Marck Script', cursive;
+  // font-family: 'Fondamento', cursive;
+font-family: 'Dekko', cursive;
 }
 
 ol,
@@ -84,10 +89,11 @@ $width-base: (100%/$cols);
 form {
   padding: 3rem 0;
 
-  span{
+  span {
     padding: 0.5rem 0;
     display: block;
   }
+
   .inner > div {
     flex-grow: 1;
     padding: 0.3rem;

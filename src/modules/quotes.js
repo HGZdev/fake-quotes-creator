@@ -1,4 +1,4 @@
-const quotes = ["[domyślny]",
+const quotes = ["[Wybierz cytat...]",
   "Nie wszystko złoto, co się świeci.",
   "Głupota ludzka jest nieskończona.",
   "Niebo gwieździste nade mną, prawo moralne we mnie.",

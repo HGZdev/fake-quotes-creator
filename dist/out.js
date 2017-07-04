@@ -9792,40 +9792,56 @@ var FakeQuotesCreator = function (_React$Component) {
       event.preventDefault();
     };
 
-    _this.handleSelectChange = function (value, className) {
+    _this.handleSelectChange = function (event) {
       var _newState;
 
       console.log("change!");
-      console.log("value: " + value, "className: " + className);
 
-      var selected = className + "Selected";
-      var display = className + "Display";
-      var list = className + "List";
+      var value = event.target.value;
+      var className = event.target.className;
 
-      var newState = (_newState = {}, _defineProperty(_newState, selected, event.target.value), _defineProperty(_newState, display, _this.state.themesList[value]), _newState);
-      console.log(newState);
+      var newState = (_newState = {}, _defineProperty(_newState, className + "Selected", value), _defineProperty(_newState, className + "Display", _this.state[className + "List"][value]), _newState);
+      // console.log(event.target.value, event.target.className, setState);
       _this.setState(newState);
     };
 
+    _this.handleClick = function (event) {
+      console.log('click!');
+
+      var className = ["topics", "quotes", "authors", "themes"];
+
+      for (var i = 0; i < className.length; i++) {
+        var _newState2;
+
+        var max = _this.state[className[i] + "List"].length - 1;
+        var random = Math.floor(Math.random() * max + 1);
+        var newState = (_newState2 = {}, _defineProperty(_newState2, className[i] + "Selected", random), _defineProperty(_newState2, className[i] + "Display", _this.state[className[i] + "List"][random]), _newState2);
+        console.log(newState);
+        _this.setState(newState);
+      }
+    };
+
     _this.state = {
-      topicsList: _this.props.topics, // zaciąganie baz danych
+      topicsList: _this.props.topics,
       quotesList: _this.props.quotes,
       authorsList: _this.props.authors,
       themesList: _this.props.themes,
 
-      topicsSelected: 0, // stany na polach select
+      topicsSelected: 0,
       quotesSelected: 0,
       authorsSelected: 0,
       themesSelected: 0,
 
-      quotesDisplay: "Wybierz cytat", // wartości wyświetlane w Board
-      authorsDisplay: "Wybierz autora",
+      quotesDisplay: "[Wybierz cytat...]",
+      authorsDisplay: "[Wybierz autora...]",
       themesDisplay: {
-        name: "Początkowy - Biały",
+        name: "",
         color: "black",
         backgroundColor: "white"
       }
     };
+    _this.handleSelectChange = _this.handleSelectChange.bind(_this);
+    _this.handleClick = _this.handleClick.bind(_this);
     return _this;
   }
 
@@ -9856,7 +9872,7 @@ var FakeQuotesCreator = function (_React$Component) {
                   _react2.default.createElement(Select, { className: 'quotes', label: 'Cytaty:', value: this.state.quotesSelected, list: this.state.quotesList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(Select, { className: 'authors', label: 'Autorzy:', value: this.state.authorsSelected, list: this.state.authorsList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(Select, { className: 'themes', label: 'Szablony:', value: this.state.themesSelected, list: this.state.themesList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(RandomBtn, { onClick: this.handleClick })
+                  _react2.default.createElement(RandomBtn, { className: 'randomBtn', onClick: this.handleClick })
                 )
               )
             )
@@ -9874,23 +9890,10 @@ var Select = function (_React$Component2) {
   _inherits(Select, _React$Component2);
 
   function Select() {
-    var _ref;
-
-    var _temp, _this2, _ret;
-
     _classCallCheck(this, Select);
 
-    for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_ref = Select.__proto__ || Object.getPrototypeOf(Select)).call.apply(_ref, [this].concat(args))), _this2), _this2.helper = function () {
-      return _this2.props.onChange(_this2.props.value, _this2.props.className);
-    }, _temp), _possibleConstructorReturn(_this2, _ret);
+    return _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).apply(this, arguments));
   }
-
-  // info o formularzach kontrolowanych
-  // https://facebook.github.io/react/docs/forms.html
 
   _createClass(Select, [{
     key: 'render',
@@ -9922,7 +9925,7 @@ var Select = function (_React$Component2) {
         ),
         _react2.default.createElement(
           'select',
-          { className: this.props.className, name: this.props.className, value: this.props.value, onChange: this.helper },
+          { className: this.props.className, name: this.props.className, value: this.props.value, onChange: this.props.onChange },
           list
         )
       );
@@ -10012,7 +10015,7 @@ var RandomBtn = function (_React$Component4) {
         ),
         _react2.default.createElement(
           'button',
-          { className: 'randomBtn', type: 'button', name: 'button' },
+          { type: 'button', name: 'button', className: this.props.className, onClick: this.props.onClick },
           'Losuj'
         )
       );
@@ -10052,7 +10055,7 @@ var Header = function (_React$Component5) {
 document.addEventListener('DOMContentLoaded', function () {
 
   var title = "Kreator Zmyślonych Cytatów";
-  var subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste";
+  var subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste!";
 
   _reactDom2.default.render(_react2.default.createElement(FakeQuotesCreator, { title: title, subtitle: subtitle, topics: _topics.topics, quotes: _quotes.quotes, authors: _authors.authors, themes: _themes.themes }), document.getElementById('app'));
 });
@@ -10534,7 +10537,7 @@ document.addEventListener('DOMContentLoaded', function () {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var authors = ["[domyślny]", "Marek Tulliusz Cyceron", "I. Kant", "Jan Paweł II", "Konfucjusz", "P. Coelho"];
+var authors = ["[Wybierz autora...]", "Marek Tulliusz Cyceron", "I. Kant", "Jan Paweł II", "Konfucjusz", "P. Coelho"];
 
 exports.authors = authors;
 
@@ -10548,7 +10551,7 @@ exports.authors = authors;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var quotes = ["[domyślny]", "Nie wszystko złoto, co się świeci.", "Głupota ludzka jest nieskończona.", "Niebo gwieździste nade mną, prawo moralne we mnie.", "Kochaj bliźniego swego, jak siebie samego.", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."];
+var quotes = ["[Wybierz cytat...]", "Nie wszystko złoto, co się świeci.", "Głupota ludzka jest nieskończona.", "Niebo gwieździste nade mną, prawo moralne we mnie.", "Kochaj bliźniego swego, jak siebie samego.", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."];
 
 // const quotes = {
 //   dobro: ["Szukaj dobra w ludziach.", "Na końcu będzie dobro.", "Kto sieje dobro, zbiera dobro."],
@@ -10583,6 +10586,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var themes = [{
+  name: "[Wybierz szablon...]",
+  color: "",
+  backgroundColor: ""
+}, {
+  name: "Biały",
+  color: "#000000",
+  backgroundColor: "#FFFFFF"
+}, {
   name: "Niebieski",
   color: "#FFFFFF",
   backgroundColor: "#3633D6"
@@ -10608,7 +10619,7 @@ exports.themes = themes;
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var topics = ["[domyślny]", "Szczęście", "Miłosć", "Sens życia", "Rozum", "Dobro"];
+var topics = ["[Wybierz tematykę...]", "Szczęście", "Miłosć", "Sens życia", "Rozum", "Dobro"];
 
 exports.topics = topics;
 

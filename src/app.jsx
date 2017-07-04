@@ -10,24 +10,26 @@ class FakeQuotesCreator extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      topicsList: this.props.topics, // zaciąganie baz danych
+      topicsList: this.props.topics,
       quotesList: this.props.quotes,
       authorsList: this.props.authors,
       themesList: this.props.themes,
 
-      topicsSelected: 0, // stany na polach select
+      topicsSelected: 0,
       quotesSelected: 0,
       authorsSelected: 0,
       themesSelected: 0,
 
-      quotesDisplay: "Wybierz cytat", // wartości wyświetlane w Board
-      authorsDisplay: "Wybierz autora",
+      quotesDisplay: "[Wybierz cytat...]",
+      authorsDisplay: "[Wybierz autora...]",
       themesDisplay: {
-        name: "Początkowy - Biały",
+        name: "",
         color: "black",
         backgroundColor: "white"
       }
     }
+    this.handleSelectChange = this.handleSelectChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   render() {
@@ -41,17 +43,13 @@ class FakeQuotesCreator extends React.Component {
               <Header className="col-12 subtitle" title={this.props.subtitle} size="h2"/>
 
               <form className="col-12" action="index.html" method="post" onSubmit={this.state.handleSubmit}>
-
                 <div className="row inner">
                   <Select className="topics" label="Tematyka:" value={this.state.topicsSelected} list={this.state.topicsList} onChange={this.handleSelectChange}/>
                   <Select className="quotes" label="Cytaty:" value={this.state.quotesSelected} list={this.state.quotesList} onChange={this.handleSelectChange}/>
                   <Select className="authors" label="Autorzy:" value={this.state.authorsSelected} list={this.state.authorsList} onChange={this.handleSelectChange}/>
-
                   <Select className="themes" label="Szablony:" value={this.state.themesSelected} list={this.state.themesList} onChange={this.handleSelectChange}/>
-
-                  <RandomBtn onClick={this.handleClick}/>
+                  <RandomBtn className="randomBtn" onClick={this.handleClick}/>
                 </div>
-
               </form>
 
             </div>
@@ -66,32 +64,41 @@ class FakeQuotesCreator extends React.Component {
     event.preventDefault();
   }
 
-  handleSelectChange = (value, className) => {
+  handleSelectChange = (event) => {
     console.log("change!");
-    console.log("value: " + value, "className: " + className);
 
-    let selected = className + "Selected";
-    let display = className + "Display";
-    let list = className + "List";
+    let value = event.target.value;
+    let className = event.target.className;
 
     let newState = {
-      [selected]: event.target.value,
-      [display]: this.state.themesList[value]
+      [className + "Selected"]: value,
+      [className + "Display"]: this.state[className + "List"][value]
     }
-    console.log(newState);
+    // console.log(event.target.value, event.target.className, setState);
     this.setState(newState);
   }
+
+  handleClick = (event) => {
+    console.log('click!');
+
+    let className = ["topics", "quotes", "authors", "themes"];
+
+    for (var i = 0; i < className.length; i++) {
+
+      let max = this.state[className[i] + "List"].length - 1;
+      let random = Math.floor(Math.random() * (max ) + 1);
+      let newState = {
+        [className[i] + "Selected"]: random,
+        [className[i] + "Display"]: this.state[className[i] + "List"][random]
+      }
+      console.log(newState);
+      this.setState(newState);
+    }
+  }
+
 }
 
 class Select extends React.Component {
-
-  // info o formularzach kontrolowanych
-  // https://facebook.github.io/react/docs/forms.html
-
-  helper = () => {
-    return this.props.onChange(this.props.value, this.props.className);
-  }
-
   render() {
     let list;
     list = this.props.list.map((el, idx) => {
@@ -105,7 +112,7 @@ class Select extends React.Component {
     return (
       <div className="col-2">
         <span>{this.props.label}</span>
-        <select className={this.props.className} name={this.props.className} value={this.props.value} onChange={this.helper}>
+        <select className={this.props.className} name={this.props.className} value={this.props.value} onChange={this.props.onChange}>
           {list}
         </select>
       </div>
@@ -142,7 +149,7 @@ class RandomBtn extends React.Component {
     return (
       <div className="col-2">
         <span>Losowy cytat:</span>
-        <button className="randomBtn" type="button" name="button">Losuj
+        <button type="button" name="button" className={this.props.className} onClick={this.props.onClick}>Losuj
         </button>
       </div>
     );
@@ -159,12 +166,10 @@ class Header extends React.Component {
   }
 }
 
-
-
 document.addEventListener('DOMContentLoaded', function () {
 
   const title = "Kreator Zmyślonych Cytatów";
-  const subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste";
+  const subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste!";
 
   ReactDOM.render(
     <FakeQuotesCreator title={title} subtitle={subtitle} topics={topics} quotes={quotes} authors={authors} themes={themes}/>, document.getElementById('app'));

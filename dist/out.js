@@ -9795,8 +9795,6 @@ var FakeQuotesCreator = function (_React$Component) {
     _this.handleSelectChange = function (event) {
       var _newState;
 
-      console.log("change!");
-
       var value = event.target.value;
       var className = event.target.className;
 
@@ -9806,8 +9804,6 @@ var FakeQuotesCreator = function (_React$Component) {
     };
 
     _this.handleClick = function (event) {
-      console.log('click!');
-
       var className = ["topics", "quotes", "authors", "themes"];
 
       for (var i = 0; i < className.length; i++) {
@@ -9816,7 +9812,7 @@ var FakeQuotesCreator = function (_React$Component) {
         var max = _this.state[className[i] + "List"].length - 1;
         var random = Math.floor(Math.random() * max + 1);
         var newState = (_newState2 = {}, _defineProperty(_newState2, className[i] + "Selected", random), _defineProperty(_newState2, className[i] + "Display", _this.state[className[i] + "List"][random]), _newState2);
-        console.log(newState);
+        // console.log(newState);
         _this.setState(newState);
       }
     };
@@ -9868,7 +9864,6 @@ var FakeQuotesCreator = function (_React$Component) {
                 _react2.default.createElement(
                   'div',
                   { className: 'row inner' },
-                  _react2.default.createElement(Select, { className: 'topics', label: 'Tematyka:', value: this.state.topicsSelected, list: this.state.topicsList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(Select, { className: 'quotes', label: 'Cytaty:', value: this.state.quotesSelected, list: this.state.quotesList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(Select, { className: 'authors', label: 'Autorzy:', value: this.state.authorsSelected, list: this.state.authorsList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(Select, { className: 'themes', label: 'Szablony:', value: this.state.themesSelected, list: this.state.themesList, onChange: this.handleSelectChange }),
@@ -10552,26 +10547,6 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var quotes = ["[Wybierz cytat...]", "Nie wszystko złoto, co się świeci.", "Głupota ludzka jest nieskończona.", "Niebo gwieździste nade mną, prawo moralne we mnie.", "Kochaj bliźniego swego, jak siebie samego.", "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."];
-
-// const quotes = {
-//   dobro: ["Szukaj dobra w ludziach.", "Na końcu będzie dobro.", "Kto sieje dobro, zbiera dobro."],
-//   szczęście: ["Szczęśliwym jest ten kto docenia to co ma.", "Szczęście to chwila co trwa."],
-//   rozum: ["Rozumu nikt Ci nie odbierze"]
-// }
-
-// const quotes = [
-//   {
-//     q: "Nie wszystko złoto, co się świeci.",
-//     t: "anonim"
-//   }, {
-//     q: "Głupota ludzka jest nieskończona.",
-//     a: "A. Einstein"
-//   }, {
-//     q: "Niebo gwieździste nade mną, prawo moralne we mnie.",
-//     a: "I. Kant"
-//   }
-// ];
-
 
 exports.quotes = quotes;
 

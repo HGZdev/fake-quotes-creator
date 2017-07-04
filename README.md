@@ -1,5 +1,5 @@
 # Fake Quotes Creator
 
-This project is currently under construction. It may not work properly!
+This project is currently under construction. It may not work properly, sorry...
 
-https://hgzwebdesign.github.io/NOT_READY_Fake_Quotes_Creator
+https://hgzwebdesign.github.io/Fake_Quotes_Creator

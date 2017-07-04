@@ -23,7 +23,7 @@ body {
   // font-family: 'Courgette', cursive;
   // font-family: 'Marck Script', cursive;
   // font-family: 'Fondamento', cursive;
-font-family: 'Dekko', cursive;
+  font-family: 'Dekko', cursive;
 }
 
 ol,
@@ -35,17 +35,17 @@ a {
   text-decoration: none;
   cursor: auto;
 }
-// Global grid settings
-$cols: 12;
-$width-base: (100%/$cols);
 
 * {
   // border: 1px solid red;
 }
+// Global grid settings
+$cols: 12;
+$width-base: (100%/$cols);
 
 .container {
   width: 100%;
-  max-width: 40rem;
+  max-width: 60rem;
   margin: 0 auto;
 }
 
@@ -107,23 +107,27 @@ form {
 }
 
 section.board {
-  .row {
-    border: antiquewhite 2px solid;
+  .container {
+    max-width: 40rem;
 
-    .quote p {
-      padding: 1rem;
-      line-height: 1.5rem;
+    .row {
+      border: antiquewhite 2px solid;
 
-      span {
-        font-size: 1.5rem;
-        font-weight: bold;
+      .quote p {
+        padding: 1rem;
+        line-height: 1.5rem;
+
+        span {
+          font-size: 1.5rem;
+          font-weight: bold;
+        }
       }
-    }
 
-    .author h3 {
-      padding: 1rem;
-      font-weight: bold;
-      text-align: right;
+      .author h3 {
+        padding: 1rem;
+        font-weight: bold;
+        text-align: right;
+      }
     }
   }
 }

@@ -44,7 +44,6 @@ class FakeQuotesCreator extends React.Component {
 
               <form className="col-12" action="index.html" method="post" onSubmit={this.state.handleSubmit}>
                 <div className="row inner">
-                  <Select className="topics" label="Tematyka:" value={this.state.topicsSelected} list={this.state.topicsList} onChange={this.handleSelectChange}/>
                   <Select className="quotes" label="Cytaty:" value={this.state.quotesSelected} list={this.state.quotesList} onChange={this.handleSelectChange}/>
                   <Select className="authors" label="Autorzy:" value={this.state.authorsSelected} list={this.state.authorsList} onChange={this.handleSelectChange}/>
                   <Select className="themes" label="Szablony:" value={this.state.themesSelected} list={this.state.themesList} onChange={this.handleSelectChange}/>
@@ -65,7 +64,6 @@ class FakeQuotesCreator extends React.Component {
   }
 
   handleSelectChange = (event) => {
-    console.log("change!");
 
     let value = event.target.value;
     let className = event.target.className;
@@ -79,23 +77,20 @@ class FakeQuotesCreator extends React.Component {
   }
 
   handleClick = (event) => {
-    console.log('click!');
-
     let className = ["topics", "quotes", "authors", "themes"];
 
     for (var i = 0; i < className.length; i++) {
 
       let max = this.state[className[i] + "List"].length - 1;
-      let random = Math.floor(Math.random() * (max ) + 1);
+      let random = Math.floor(Math.random() * (max) + 1);
       let newState = {
         [className[i] + "Selected"]: random,
         [className[i] + "Display"]: this.state[className[i] + "List"][random]
       }
-      console.log(newState);
+      // console.log(newState);
       this.setState(newState);
     }
   }
-
 }
 
 class Select extends React.Component {
@@ -121,7 +116,6 @@ class Select extends React.Component {
 }
 
 class Board extends React.Component {
-
   render() {
     return (
       <section className="board">

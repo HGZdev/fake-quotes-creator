@@ -1,6 +1,6 @@
 const themes = [{
     name: "[Wybierz szablon...]",
-    color: "",
+    color: "#242424",
     backgroundColor: ""
   }, {
     name: "Biały",

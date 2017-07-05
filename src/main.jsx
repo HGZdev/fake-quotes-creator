@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PrintTemplate from 'react-print';
 
 import {topics} from "./modules/topics.js";
 import {quotes} from "./modules/quotes.js";
@@ -35,7 +36,7 @@ class FakeQuotesCreator extends React.Component {
   render() {
     return (
       <div>
-        <section className="dashboard">
+        <section className="dashboard" id="react-no-print">
           <div className="container">
             <div className="row outer">
 
@@ -44,6 +45,7 @@ class FakeQuotesCreator extends React.Component {
 
               <form className="col-12" action="index.html" method="post" onSubmit={this.state.handleSubmit}>
                 <div className="row inner">
+                  <Select className="topics" label="Kategoria:" value={this.state.topicsSelected} list={this.state.topicsList} onChange={this.handleSelectChange}/>
                   <Select className="quotes" label="Cytaty:" value={this.state.quotesSelected} list={this.state.quotesList} onChange={this.handleSelectChange}/>
                   <Select className="authors" label="Autorzy:" value={this.state.authorsSelected} list={this.state.authorsList} onChange={this.handleSelectChange}/>
                   <Select className="themes" label="Szablony:" value={this.state.themesSelected} list={this.state.themesList} onChange={this.handleSelectChange}/>
@@ -64,29 +66,57 @@ class FakeQuotesCreator extends React.Component {
   }
 
   handleSelectChange = (event) => {
-
     let value = event.target.value;
     let className = event.target.className;
+    let newState = {};
+    // console.log(value, className);
 
-    let newState = {
-      [className + "Selected"]: value,
-      [className + "Display"]: this.state[className + "List"][value]
+    if (className === "topics") { // Quotes filtered by topics
+      let quotesListNew;
+      if (value === "0") {
+        quotesListNew = this.props.quotes;
+      } else {
+        quotesListNew = [this.props.quotes[0]];
+        for (var i = 0; i < this.props.quotes.length; i++) {
+          if (this.props.quotes[i].t === this.state.topicsList[value]) {
+            quotesListNew.push(this.props.quotes[i]);
+          }
+        }
+      }
+      newState = {
+        quotesSelected: 0,
+        quotesList: quotesListNew,
+        topicsSelected: value,
+        topicsDisplay: this.state.topicsList[value]
+      }
+    } else {
+      newState = {
+        [className + "Selected"]: value,
+        [className + "Display"]: this.state[className + "List"][value].q || this.state[className + "List"][value]
+      }
     }
-    // console.log(event.target.value, event.target.className, setState);
+    // console.log(setState);
     this.setState(newState);
   }
 
   handleClick = (event) => {
-    let className = ["topics", "quotes", "authors", "themes"];
+    let className = ["quotes", "authors", "themes"];
 
     for (var i = 0; i < className.length; i++) {
-
+      let newState = {};
       let max = this.state[className[i] + "List"].length - 1;
       let random = Math.floor(Math.random() * (max) + 1);
-      let newState = {
-        [className[i] + "Selected"]: random,
-        [className[i] + "Display"]: this.state[className[i] + "List"][random]
-      }
+
+      newState["topicsSelected"] = 0;
+      newState["quotesList"] = this.props.quotes;
+      newState[className[i] + "Selected"] = random;
+
+      (className[i] === "quotes")
+        ? newState["quotesDisplay"] = this.state.quotesList[random].q
+        : newState[
+          [className[i] + "Display"]
+        ] = this.state[className[i] + "List"][random];
+
       // console.log(newState);
       this.setState(newState);
     }
@@ -95,9 +125,10 @@ class FakeQuotesCreator extends React.Component {
 
 class Select extends React.Component {
   render() {
-    let list;
-    list = this.props.list.map((el, idx) => {
-      if (el.name) {
+    let list = this.props.list.map((el, idx) => {
+      if (this.props.className == "quotes") {
+        return <option key={idx} value={idx}>{el.q}</option>
+      } else if (this.props.className == "themes") {
         return <option key={idx} value={idx}>{el.name}</option>
       } else {
         return <option key={idx} value={idx}>{el}</option>

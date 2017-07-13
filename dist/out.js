@@ -10839,11 +10839,10 @@ var FakeQuotesCreator = function (_React$Component) {
       var value = event.target.value;
       var className = event.target.className;
       var newState = {};
-      // console.log(value, className);
+      var quotesListNew = void 0;
 
+      // Quotes filtered by topics
       if (className === "topics") {
-        // Quotes filtered by topics
-        var quotesListNew = void 0;
         if (value === "0") {
           quotesListNew = _this.props.quotes;
         } else {
@@ -10865,40 +10864,44 @@ var FakeQuotesCreator = function (_React$Component) {
 
         newState = (_newState = {}, _defineProperty(_newState, className + "Selected", value), _defineProperty(_newState, className + "Display", _this.state[className + "List"][value].q || _this.state[className + "List"][value]), _newState);
       }
-      // console.log(setState);
+      // console.log(value, className, setState);
       _this.setState(newState);
     };
 
-    _this.handleClick = function (event) {
+    _this.handleRandomClick = function (event) {
       var className = ["quotes", "authors", "themes"];
+      var newState = {};
+      var max = void 0,
+          random = void 0;
 
       for (var i = 0; i < className.length; i++) {
-        var newState = {};
-        var max = _this.state[className[i] + "List"].length - 1;
-        var random = Math.floor(Math.random() * max + 1);
+        max = _this.state[className[i] + "List"].length - 1;
+        random = Math.floor(Math.random() * max + 1);
 
         newState["topicsSelected"] = 0;
         newState["quotesList"] = _this.props.quotes;
         newState[className[i] + "Selected"] = random;
 
         className[i] === "quotes" ? newState["quotesDisplay"] = _this.state.quotesList[random].q : newState[[className[i] + "Display"]] = _this.state[className[i] + "List"][random];
-
-        // console.log(newState);
-        _this.setState(newState);
       }
+      // console.log(newState);
+      _this.setState(newState);
     };
 
     _this.state = {
+      // Lists of values
       topicsList: _this.props.topics,
       quotesList: _this.props.quotes,
       authorsList: _this.props.authors,
       themesList: _this.props.themes,
 
+      // Form settings
       topicsSelected: 0,
       quotesSelected: 0,
       authorsSelected: 0,
       themesSelected: 0,
 
+      // Display settings
       quotesDisplay: "[Wybierz cytat...]",
       authorsDisplay: "[Wybierz autora...]",
       themesDisplay: {
@@ -10908,7 +10911,7 @@ var FakeQuotesCreator = function (_React$Component) {
       }
     };
     _this.handleSelectChange = _this.handleSelectChange.bind(_this);
-    _this.handleClick = _this.handleClick.bind(_this);
+    _this.handleRandomClick = _this.handleRandomClick.bind(_this);
     return _this;
   }
 
@@ -10939,7 +10942,7 @@ var FakeQuotesCreator = function (_React$Component) {
                   _react2.default.createElement(Select, { className: 'quotes', label: 'Cytaty:', value: this.state.quotesSelected, list: this.state.quotesList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(Select, { className: 'authors', label: 'Autorzy:', value: this.state.authorsSelected, list: this.state.authorsList, onChange: this.handleSelectChange }),
                   _react2.default.createElement(Select, { className: 'themes', label: 'Szablony:', value: this.state.themesSelected, list: this.state.themesList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(RandomBtn, { className: 'randomBtn', onClick: this.handleClick })
+                  _react2.default.createElement(RandomBtn, { className: 'randomBtn', onClick: this.handleRandomClick })
                 )
               )
             )

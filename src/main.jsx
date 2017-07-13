@@ -11,16 +11,19 @@ class FakeQuotesCreator extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      // Lists of values
       topicsList: this.props.topics,
       quotesList: this.props.quotes,
       authorsList: this.props.authors,
       themesList: this.props.themes,
 
+      // Form settings
       topicsSelected: 0,
       quotesSelected: 0,
       authorsSelected: 0,
       themesSelected: 0,
 
+      // Display settings
       quotesDisplay: "[Wybierz cytat...]",
       authorsDisplay: "[Wybierz autora...]",
       themesDisplay: {
@@ -30,7 +33,7 @@ class FakeQuotesCreator extends React.Component {
       }
     }
     this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleRandomClick = this.handleRandomClick.bind(this);
   }
 
   render() {
@@ -49,7 +52,7 @@ class FakeQuotesCreator extends React.Component {
                   <Select className="quotes" label="Cytaty:" value={this.state.quotesSelected} list={this.state.quotesList} onChange={this.handleSelectChange}/>
                   <Select className="authors" label="Autorzy:" value={this.state.authorsSelected} list={this.state.authorsList} onChange={this.handleSelectChange}/>
                   <Select className="themes" label="Szablony:" value={this.state.themesSelected} list={this.state.themesList} onChange={this.handleSelectChange}/>
-                  <RandomBtn className="randomBtn" onClick={this.handleClick}/>
+                  <RandomBtn className="randomBtn" onClick={this.handleRandomClick}/>
                 </div>
               </form>
 
@@ -69,10 +72,10 @@ class FakeQuotesCreator extends React.Component {
     let value = event.target.value;
     let className = event.target.className;
     let newState = {};
-    // console.log(value, className);
+    let quotesListNew;
 
-    if (className === "topics") { // Quotes filtered by topics
-      let quotesListNew;
+    // Quotes filtered by topics
+    if (className === "topics") {
       if (value === "0") {
         quotesListNew = this.props.quotes;
       } else {
@@ -95,17 +98,19 @@ class FakeQuotesCreator extends React.Component {
         [className + "Display"]: this.state[className + "List"][value].q || this.state[className + "List"][value]
       }
     }
-    // console.log(setState);
+    // console.log(value, className, setState);
     this.setState(newState);
   }
 
-  handleClick = (event) => {
+  handleRandomClick = (event) => {
     let className = ["quotes", "authors", "themes"];
+    let newState = {};
+    let max,
+      random;
 
     for (var i = 0; i < className.length; i++) {
-      let newState = {};
-      let max = this.state[className[i] + "List"].length - 1;
-      let random = Math.floor(Math.random() * (max) + 1);
+      max = this.state[className[i] + "List"].length - 1;
+      random = Math.floor(Math.random() * max + 1);
 
       newState["topicsSelected"] = 0;
       newState["quotesList"] = this.props.quotes;
@@ -116,10 +121,9 @@ class FakeQuotesCreator extends React.Component {
         : newState[
           [className[i] + "Display"]
         ] = this.state[className[i] + "List"][random];
-
-      // console.log(newState);
-      this.setState(newState);
     }
+    // console.log(newState);
+    this.setState(newState);
   }
 }
 

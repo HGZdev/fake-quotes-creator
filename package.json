@@ -8,11 +8,9 @@
     "dev-server": "./node_modules/.bin/webpack-dev-server --inline --hot"
   },
   "dependencies": {
-    "firebase": "^4.0.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
-    "react-router": "^3.0.3",
-    "whatwg-fetch": "^2.0.3"
+    "react-router": "^3.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",

@@ -21,10 +21,6 @@ body {
   background-color: black;
   color: #CFBB75;
   font-family: 'Dekko', cursive;
-  // font-family: 'Shadows Into Light Two', cursive;
-  // font-family: 'Courgette', cursive;
-  // font-family: 'Marck Script', cursive;
-  // font-family: 'Fondamento', cursive;
 }
 
 ol,
@@ -38,6 +34,7 @@ a {
 }
 //
 // Global grid settings
+//
 $cols: 12;
 $width-base: (100%/$cols);
 
@@ -58,7 +55,9 @@ $width-base: (100%/$cols);
   width: 100%;
   min-height: 1px;
 }
+//
 // SMARTPHONE MEDIUM (min 480px)
+//
 @media only screen and (min-width: 480px) {
    @for $i from 1 through $cols{
     .col-#{$i} {
@@ -81,7 +80,7 @@ $width-base: (100%/$cols);
   padding: 1rem 0.5rem;
 
   h2 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
 
@@ -113,7 +112,7 @@ section.board {
       border: white 2px solid;
 
       .quote p {
-        font-size: 1.5rem;;
+        font-size: 1.5rem;
         padding: 1rem;
         line-height: 2rem;
 

@@ -1,3 +1,16 @@
+// @import "modules/reset";
+// Color Palette
+$c1: #000000;
+$c2: #fff;
+$c4: #000000;
+$c7: #5B6A73;
+$c5: #110C20;
+$c3: #9DA9B0;
+$c6: #607078;
+
+
+
+
 // Reset CSS:
 
 * {
@@ -17,9 +30,8 @@
 
 body {
   line-height: 1;
-  font-size: 1.1rem;
-  background-color: black;
-  color: #CFBB75;
+  background-color: $c5;
+  color: $c1;
   font-family: 'Dekko', cursive;
 }
 
@@ -31,6 +43,7 @@ ul {
 a {
   text-decoration: none;
   cursor: auto;
+  color: $c1;
 }
 //
 // Global grid settings
@@ -42,6 +55,8 @@ $width-base: (100%/$cols);
   width: 100%;
   max-width: 60rem;
   margin: 0 auto;
+  // padding: 0 0.5rem;
+  background-color: $c3;
 }
 
 .row {
@@ -68,48 +83,57 @@ $width-base: (100%/$cols);
 //
 // Sections
 
-.title {
-  padding: 1rem 0.5rem;
+section.dashboard {
+  .title {
+    padding: 1rem 0.5rem;
+    background-color: $c6;
 
-  h1 {
-    font-size: 3rem;
-  }
-}
-
-.subtitle {
-  padding: 1rem 0.5rem;
-
-  h2 {
-    font-size: 1.6rem;
-  }
-}
-
-form {
-  padding: 3rem 0;
-
-  span {
-    padding: 0.5rem 0;
-    display: block;
+    h1 {
+      font-size: 3rem;
+    }
   }
 
-  .inner > div {
-    flex-grow: 1;
-    padding: 0.3rem;
+  .subtitle {
+    padding: 1rem 0.5rem;
+    background-color: $c6;
 
-    button,
-    select {
-      width: 100%;
-      height: 2rem;
+    h2 {
+      font-size: 1.6rem;
+    }
+  }
+
+  form {
+    padding: 1rem 0 0;
+
+    span {
+      padding: 0.5rem 0;
+      display: block;
+      font-size: 1.1rem;
+    }
+
+    .inner > div {
+      flex-grow: 1;
+      padding: 0 0.5rem;
+
+      button,
+      select {
+        width: 100%;
+        height: 2rem;
+      }
     }
   }
 }
 
 section.board {
   .container {
-    max-width: 40rem;
+    display: flex;
+    justify-content: center;
+    padding: 4rem 0.5rem;
 
     .row {
-      border: white 2px solid;
+      width: 40rem;
+      box-shadow: 0 5px 23px 0 rgba(50, 50, 50, 0.82);
+      z-index: 999;
 
       .quote p {
         font-size: 1.5rem;
@@ -131,7 +155,68 @@ section.board {
   }
 }
 
+section.footer {
+  .container {
+    background-color: $c7;
+    color: $c2;
+    font-weight: bold;
+
+    .row {
+      align-items: center;
+      text-align: center;
+
+      & > div {
+        padding: 0.5rem 0;
+      }
+
+      .social_media {
+        a {
+          display: inline-block;
+          padding: 0.2rem;
+        }
+
+        .social_icon {
+          display: inline-block;
+          height: 1.5rem;
+          width: 1.5rem;
+          background-position: center;
+          background-size: 1.5em 1.5em;
+          background-repeat: no-repeat;
+        }
+
+        .google {
+          /*"Google plus logo" designed by Glypho from Flaticon*/
+          background-image: url('../dist/images/googleplus.png');
+        }
+
+        .facebook {
+          /*"Facebook logo" designed by Glypho from Flaticon*/
+          background-image: url('../dist/images/facebook.png');
+        }
+
+        .twitter {
+          /*"Twitter icon" designed by Glypho from Flaticon*/
+          background-image: url('../dist/images/twitter.png');
+        }
+
+        .pinterest {
+          /*"Pinterest logo" designed by Icomoon Free 2 from Flaticon*/
+          background-image: url('../dist/images/pinterest.png');
+        }
+      }
+
+      .title {}
+
+      .author {
+        a {
+          color: $c2;
+        }
+      }
+    }
+  }
+}
+
 * {
   // Border Test
-  // border: 1px solid red;
+  // border: 1px solid #AD3F3F;
 }

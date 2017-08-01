@@ -59,7 +59,10 @@ class FakeQuotesCreator extends React.Component {
             </div>
           </div>
         </section>
+
         <Board quotesDisplay={this.state.quotesDisplay} authorsDisplay={this.state.authorsDisplay} themesDisplay={this.state.themesDisplay}/>
+        <Footer title={this.props.title}/>
+
       </div>
     );
   }
@@ -127,6 +130,16 @@ class FakeQuotesCreator extends React.Component {
   }
 }
 
+class Header extends React.Component {
+  render() {
+    return (
+      <div className={this.props.className}>
+        <this.props.size>{this.props.title}</this.props.size>
+      </div>
+    );
+  }
+}
+
 class Select extends React.Component {
   render() {
     let list = this.props.list.map((el, idx) => {
@@ -145,6 +158,18 @@ class Select extends React.Component {
         <select className={this.props.className} name={this.props.className} value={this.props.value} onChange={this.props.onChange}>
           {list}
         </select>
+      </div>
+    );
+  }
+}
+
+class RandomBtn extends React.Component {
+  render() {
+    return (
+      <div className="col-2">
+        <span>&nbsp;</span>
+        <button type="button" name="button" className={this.props.className} onClick={this.props.onClick}>Losuj
+        </button>
       </div>
     );
   }
@@ -173,24 +198,37 @@ class Board extends React.Component {
   }
 }
 
-class RandomBtn extends React.Component {
+class Footer extends React.Component {
   render() {
     return (
-      <div className="col-2">
-        <span>Losowy cytat:</span>
-        <button type="button" name="button" className={this.props.className} onClick={this.props.onClick}>Losuj
-        </button>
-      </div>
-    );
-  }
-}
+      <section className="footer">
+        <div className="container">
+          <div className="row outer">
 
-class Header extends React.Component {
-  render() {
-    return (
-      <div className={this.props.className}>
-        <this.props.size>{this.props.title}</this.props.size>
-      </div>
+            <div className="col-3 social_media">
+              <a href="#" target="_blank" rel="nofollow">
+                <div className="social_icon google"> </div>
+              </a>
+              <a href="#" target="_blank" rel="nofollow">
+                <div className="social_icon facebook"> </div>
+              </a>
+              <a href="#" target="_blank" rel="nofollow">
+                <div className="social_icon twitter"> </div>
+              </a>
+              <a href="#" target="_blank" rel="nofollow">
+                <div className="social_icon pinterest"> </div>
+              </a>
+            </div>
+            <div className="col-5 title">{this.props.title}</div>
+            <div className="col-4 author">
+              <p>
+                <a href="https://github.com/HGZwebdesign" target="_blank" rel="nofollow">HGZ&nbsp;webdesign</a>&nbsp;&copy;&nbsp;2017
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
     );
   }
 }

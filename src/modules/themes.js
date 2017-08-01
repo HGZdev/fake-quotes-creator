@@ -10,16 +10,26 @@ const themes = [{
   {
     name: "Niebieski",
     color: "#FFFFFF",
-    backgroundColor: "#3633D6"
+    backgroundColor: "#4E4CC3"
+  },
+  {
+    name: "Pomarańczowy",
+    color: "#000000",
+    backgroundColor: "#E78641"
+  },
+  {
+    name: "Różowy",
+    color: "#FBE1F9",
+    backgroundColor: "#D939C9"
   },
   {
     name: "Zielony",
-    color: "#D7A23B",
-    backgroundColor: "#358524"
+    color: "#E3B457",
+    backgroundColor: "#395932"
   },
   {
     name: "Czarny",
-    color: "#FFFFFF",
+    color: "#E3B457",
     backgroundColor: "#000000"
   }
 ]

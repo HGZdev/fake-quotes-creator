@@ -1,9 +1,10 @@
 const topics = [
-  "Wszystkie",
-  "Szczęście",
+  "[Wybierz kategorię...]",
+  "Mądrość i głupota",
   "Miłość",
-  "Rozum",
-  "Cnota"
+  "Pieniądze i bogactwo",
+  "Szczęście",
+  "Władza",
+  "Wolność i niewola"
 ];
-
 export { topics };

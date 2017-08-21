@@ -11252,443 +11252,7 @@ module.exports = __webpack_require__(93);
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = __webpack_require__(94);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = __webpack_require__(110);
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactPrint = __webpack_require__(196);
-
-var _reactPrint2 = _interopRequireDefault(_reactPrint);
-
-var _topics = __webpack_require__(212);
-
-var _quotes = __webpack_require__(213);
-
-var _authors = __webpack_require__(214);
-
-var _themes = __webpack_require__(215);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var FakeQuotesCreator = function (_React$Component) {
-  _inherits(FakeQuotesCreator, _React$Component);
-
-  function FakeQuotesCreator(props) {
-    _classCallCheck(this, FakeQuotesCreator);
-
-    var _this = _possibleConstructorReturn(this, (FakeQuotesCreator.__proto__ || Object.getPrototypeOf(FakeQuotesCreator)).call(this, props));
-
-    _this.handleSubmit = function (event) {
-      event.preventDefault();
-    };
-
-    _this.handleSelectChange = function (event) {
-      var value = event.target.value;
-      var className = event.target.className;
-      var newState = {};
-      var quotesListNew = void 0;
-
-      // Quotes filtered by topics
-      if (className === "topics") {
-        if (value === "0") {
-          quotesListNew = _this.props.quotes;
-        } else {
-          quotesListNew = [_this.props.quotes[0]];
-          for (var i = 0; i < _this.props.quotes.length; i++) {
-            if (_this.props.quotes[i].t === _this.state.topicsList[value]) {
-              quotesListNew.push(_this.props.quotes[i]);
-            }
-          }
-        }
-        newState = {
-          quotesSelected: 0,
-          quotesList: quotesListNew,
-          topicsSelected: value,
-          topicsDisplay: _this.state.topicsList[value]
-        };
-      } else {
-        var _newState;
-
-        newState = (_newState = {}, _defineProperty(_newState, className + "Selected", value), _defineProperty(_newState, className + "Display", _this.state[className + "List"][value].q || _this.state[className + "List"][value]), _newState);
-      }
-      // console.log(value, className, setState);
-      _this.setState(newState);
-    };
-
-    _this.handleRandomClick = function (event) {
-      var className = ["quotes", "authors", "themes"];
-      var newState = {};
-      var max = void 0,
-          random = void 0;
-
-      for (var i = 0; i < className.length; i++) {
-        max = _this.state[className[i] + "List"].length - 1;
-        random = Math.floor(Math.random() * max + 1);
-
-        newState["topicsSelected"] = 0;
-        newState["quotesList"] = _this.props.quotes;
-        newState[className[i] + "Selected"] = random;
-
-        className[i] === "quotes" ? newState["quotesDisplay"] = _this.state.quotesList[random].q : newState[[className[i] + "Display"]] = _this.state[className[i] + "List"][random];
-      }
-      // console.log(newState);
-      _this.setState(newState);
-    };
-
-    _this.state = {
-      // Lists of values
-      topicsList: _this.props.topics,
-      quotesList: _this.props.quotes,
-      authorsList: _this.props.authors,
-      themesList: _this.props.themes,
-
-      // Form settings
-      topicsSelected: 0,
-      quotesSelected: 0,
-      authorsSelected: 0,
-      themesSelected: 0,
-
-      // Display settings
-      quotesDisplay: "[Wybierz cytat...]",
-      authorsDisplay: "[Wybierz autora...]",
-      themesDisplay: {
-        name: "",
-        color: "black",
-        backgroundColor: "white"
-      }
-    };
-    _this.handleSelectChange = _this.handleSelectChange.bind(_this);
-    _this.handleRandomClick = _this.handleRandomClick.bind(_this);
-    return _this;
-  }
-
-  _createClass(FakeQuotesCreator, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        _react2.default.createElement(
-          'section',
-          { className: 'dashboard', id: 'react-no-print' },
-          _react2.default.createElement(
-            'div',
-            { className: 'container' },
-            _react2.default.createElement(
-              'div',
-              { className: 'row outer' },
-              _react2.default.createElement(Header, { className: 'col-12 title', title: this.props.title, size: 'h1' }),
-              _react2.default.createElement(Header, { className: 'col-12 subtitle', title: this.props.subtitle, size: 'h2' }),
-              _react2.default.createElement(
-                'form',
-                { className: 'col-12', action: 'index.html', method: 'post', onSubmit: this.state.handleSubmit },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'row inner' },
-                  _react2.default.createElement(Select, { className: 'topics', label: 'Kategoria:', value: this.state.topicsSelected, list: this.state.topicsList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(Select, { className: 'quotes', label: 'Cytaty:', value: this.state.quotesSelected, list: this.state.quotesList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(Select, { className: 'authors', label: 'Autorzy:', value: this.state.authorsSelected, list: this.state.authorsList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(Select, { className: 'themes', label: 'Szablony:', value: this.state.themesSelected, list: this.state.themesList, onChange: this.handleSelectChange }),
-                  _react2.default.createElement(RandomBtn, { className: 'randomBtn', onClick: this.handleRandomClick })
-                )
-              )
-            )
-          )
-        ),
-        _react2.default.createElement(Board, { quotesDisplay: this.state.quotesDisplay, authorsDisplay: this.state.authorsDisplay, themesDisplay: this.state.themesDisplay }),
-        _react2.default.createElement(Footer, { title: this.props.title })
-      );
-    }
-  }]);
-
-  return FakeQuotesCreator;
-}(_react2.default.Component);
-
-var Header = function (_React$Component2) {
-  _inherits(Header, _React$Component2);
-
-  function Header() {
-    _classCallCheck(this, Header);
-
-    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
-  }
-
-  _createClass(Header, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: this.props.className },
-        _react2.default.createElement(
-          this.props.size,
-          null,
-          this.props.title
-        )
-      );
-    }
-  }]);
-
-  return Header;
-}(_react2.default.Component);
-
-var Select = function (_React$Component3) {
-  _inherits(Select, _React$Component3);
-
-  function Select() {
-    _classCallCheck(this, Select);
-
-    return _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).apply(this, arguments));
-  }
-
-  _createClass(Select, [{
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var list = this.props.list.map(function (el, idx) {
-        if (_this4.props.className == "quotes") {
-          return _react2.default.createElement(
-            'option',
-            { key: idx, value: idx },
-            el.q
-          );
-        } else if (_this4.props.className == "themes") {
-          return _react2.default.createElement(
-            'option',
-            { key: idx, value: idx },
-            el.name
-          );
-        } else {
-          return _react2.default.createElement(
-            'option',
-            { key: idx, value: idx },
-            el
-          );
-        }
-      });
-
-      return _react2.default.createElement(
-        'div',
-        { className: 'col-2' },
-        _react2.default.createElement(
-          'span',
-          null,
-          this.props.label
-        ),
-        _react2.default.createElement(
-          'select',
-          { className: this.props.className, name: this.props.className, value: this.props.value, onChange: this.props.onChange },
-          list
-        )
-      );
-    }
-  }]);
-
-  return Select;
-}(_react2.default.Component);
-
-var RandomBtn = function (_React$Component4) {
-  _inherits(RandomBtn, _React$Component4);
-
-  function RandomBtn() {
-    _classCallCheck(this, RandomBtn);
-
-    return _possibleConstructorReturn(this, (RandomBtn.__proto__ || Object.getPrototypeOf(RandomBtn)).apply(this, arguments));
-  }
-
-  _createClass(RandomBtn, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        { className: 'col-2' },
-        _react2.default.createElement(
-          'span',
-          null,
-          '\xA0'
-        ),
-        _react2.default.createElement(
-          'button',
-          { type: 'button', name: 'button', className: this.props.className, onClick: this.props.onClick },
-          'Losuj'
-        )
-      );
-    }
-  }]);
-
-  return RandomBtn;
-}(_react2.default.Component);
-
-var Board = function (_React$Component5) {
-  _inherits(Board, _React$Component5);
-
-  function Board() {
-    _classCallCheck(this, Board);
-
-    return _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).apply(this, arguments));
-  }
-
-  _createClass(Board, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'section',
-        { className: 'board' },
-        _react2.default.createElement(
-          'div',
-          { className: 'container' },
-          _react2.default.createElement(
-            'div',
-            { className: 'row outer', style: this.props.themesDisplay },
-            _react2.default.createElement(
-              'div',
-              { className: 'col-12 quote' },
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  '"'
-                ),
-                this.props.quotesDisplay,
-                _react2.default.createElement(
-                  'span',
-                  null,
-                  '"'
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'col-12 author' },
-              _react2.default.createElement(
-                'h3',
-                null,
-                this.props.authorsDisplay
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Board;
-}(_react2.default.Component);
-
-var Footer = function (_React$Component6) {
-  _inherits(Footer, _React$Component6);
-
-  function Footer() {
-    _classCallCheck(this, Footer);
-
-    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
-  }
-
-  _createClass(Footer, [{
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'section',
-        { className: 'footer' },
-        _react2.default.createElement(
-          'div',
-          { className: 'container' },
-          _react2.default.createElement(
-            'div',
-            { className: 'row outer' },
-            _react2.default.createElement(
-              'div',
-              { className: 'col-3 social_media' },
-              _react2.default.createElement(
-                'a',
-                { href: '#', target: '_blank', rel: 'nofollow' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'social_icon google' },
-                  ' '
-                )
-              ),
-              _react2.default.createElement(
-                'a',
-                { href: '#', target: '_blank', rel: 'nofollow' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'social_icon facebook' },
-                  ' '
-                )
-              ),
-              _react2.default.createElement(
-                'a',
-                { href: '#', target: '_blank', rel: 'nofollow' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'social_icon twitter' },
-                  ' '
-                )
-              ),
-              _react2.default.createElement(
-                'a',
-                { href: '#', target: '_blank', rel: 'nofollow' },
-                _react2.default.createElement(
-                  'div',
-                  { className: 'social_icon pinterest' },
-                  ' '
-                )
-              )
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'col-5 title' },
-              this.props.title
-            ),
-            _react2.default.createElement(
-              'div',
-              { className: 'col-4 author' },
-              _react2.default.createElement(
-                'p',
-                null,
-                _react2.default.createElement(
-                  'a',
-                  { href: 'https://github.com/HGZwebdesign', target: '_blank', rel: 'nofollow' },
-                  'HGZ\xA0webdesign'
-                ),
-                '\xA0\xA9\xA02017'
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Footer;
-}(_react2.default.Component);
-
-document.addEventListener('DOMContentLoaded', function () {
-
-  var title = "Kreator Zmyślonych Cytatów";
-  var subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste!";
-
-  _reactDom2.default.render(_react2.default.createElement(FakeQuotesCreator, { title: title, subtitle: subtitle, topics: _topics.topics, quotes: _quotes.quotes, authors: _authors.authors, themes: _themes.themes }), document.getElementById('app'));
-});
+var _createClass=function(){function a(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,'value'in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}return function(b,c,d){return c&&a(b.prototype,c),d&&a(b,d),b}}(),_react=__webpack_require__(94),_react2=_interopRequireDefault(_react),_reactDom=__webpack_require__(110),_reactDom2=_interopRequireDefault(_reactDom),_reactPrint=__webpack_require__(196),_reactPrint2=_interopRequireDefault(_reactPrint),_topics=__webpack_require__(212),_quotes=__webpack_require__(213),_authors=__webpack_require__(214),_themes=__webpack_require__(215);function _interopRequireDefault(a){return a&&a.__esModule?a:{default:a}}function _defineProperty(a,b,c){return b in a?Object.defineProperty(a,b,{value:c,enumerable:!0,configurable:!0,writable:!0}):a[b]=c,a}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(a,b){if(!a)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return b&&('object'==typeof b||'function'==typeof b)?b:a}function _inherits(a,b){if('function'!=typeof b&&null!==b)throw new TypeError('Super expression must either be null or a function, not '+typeof b);a.prototype=Object.create(b&&b.prototype,{constructor:{value:a,enumerable:!1,writable:!0,configurable:!0}}),b&&(Object.setPrototypeOf?Object.setPrototypeOf(a,b):a.__proto__=b)}var FakeQuotesCreator=function(a){function b(a){_classCallCheck(this,b);var c=_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).call(this,a));return c.handleSubmit=function(a){a.preventDefault()},c.handleSelectChange=function(a){var b,d=a.target.value,e=a.target.className,f={};if('topics'===e){if('0'===d)b=c.props.quotes;else{b=[c.props.quotes[0]];for(var g=0;g<c.props.quotes.length;g++)c.props.quotes[g].t===c.state.topicsList[d]&&b.push(c.props.quotes[g])}f={quotesSelected:0,quotesList:b,topicsSelected:d,topicsDisplay:c.state.topicsList[d]}}else{var h;f=(h={},_defineProperty(h,e+'Selected',d),_defineProperty(h,e+'Display',c.state[e+'List'][d].q||c.state[e+'List'][d]),h)}c.setState(f)},c.handleRandomClick=function(){for(var a=['quotes','authors','themes'],b={},d=void 0,e=void 0,f=0;f<a.length;f++)d=c.state[a[f]+'List'].length-1,e=Math.floor(Math.random()*d+1),b.topicsSelected=0,b.quotesList=c.props.quotes,b[a[f]+'Selected']=e,'quotes'===a[f]?b.quotesDisplay=c.state.quotesList[e].q:b[[a[f]+'Display']]=c.state[a[f]+'List'][e];c.setState(b)},c.state={topicsList:c.props.topics,quotesList:c.props.quotes,authorsList:c.props.authors,themesList:c.props.themes,topicsSelected:0,quotesSelected:0,authorsSelected:0,themesSelected:0,quotesDisplay:'[Wybierz cytat...]',authorsDisplay:'[Wybierz autora...]',themesDisplay:{name:'',color:'black',backgroundColor:'white'}},c.handleSelectChange=c.handleSelectChange.bind(c),c.handleRandomClick=c.handleRandomClick.bind(c),c}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return _react2.default.createElement('div',null,_react2.default.createElement('section',{className:'dashboard',id:'react-no-print'},_react2.default.createElement('div',{className:'container'},_react2.default.createElement('div',{className:'row outer'},_react2.default.createElement(Header,{className:'col-12 title',title:this.props.title,size:'h1'}),_react2.default.createElement(Header,{className:'col-12 subtitle',title:this.props.subtitle,size:'h2'}),_react2.default.createElement('form',{className:'col-12',action:'index.html',method:'post',onSubmit:this.state.handleSubmit},_react2.default.createElement('div',{className:'row inner'},_react2.default.createElement(Select,{className:'topics',label:'Kategoria:',value:this.state.topicsSelected,list:this.state.topicsList,onChange:this.handleSelectChange}),_react2.default.createElement(Select,{className:'quotes',label:'Cytaty:',value:this.state.quotesSelected,list:this.state.quotesList,onChange:this.handleSelectChange}),_react2.default.createElement(Select,{className:'authors',label:'Autorzy:',value:this.state.authorsSelected,list:this.state.authorsList,onChange:this.handleSelectChange}),_react2.default.createElement(Select,{className:'themes',label:'Szablony:',value:this.state.themesSelected,list:this.state.themesList,onChange:this.handleSelectChange}),_react2.default.createElement(RandomBtn,{className:'randomBtn',onClick:this.handleRandomClick})))))),_react2.default.createElement(Board,{quotesDisplay:this.state.quotesDisplay,authorsDisplay:this.state.authorsDisplay,themesDisplay:this.state.themesDisplay}),_react2.default.createElement(Footer,{title:this.props.title}))}}]),b}(_react2.default.Component),Header=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return _react2.default.createElement('div',{className:this.props.className},_react2.default.createElement(this.props.size,null,this.props.title))}}]),b}(_react2.default.Component),Select=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){var a=this,b=this.props.list.map(function(b,c){return'quotes'==a.props.className?_react2.default.createElement('option',{key:c,value:c},b.q):'themes'==a.props.className?_react2.default.createElement('option',{key:c,value:c},b.name):_react2.default.createElement('option',{key:c,value:c},b)});return _react2.default.createElement('div',{className:'col-2'},_react2.default.createElement('span',null,this.props.label),_react2.default.createElement('select',{className:this.props.className,name:this.props.className,value:this.props.value,onChange:this.props.onChange},b))}}]),b}(_react2.default.Component),RandomBtn=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return _react2.default.createElement('div',{className:'col-2'},_react2.default.createElement('span',null,'\xA0'),_react2.default.createElement('button',{type:'button',name:'button',className:this.props.className,onClick:this.props.onClick},'Losuj'))}}]),b}(_react2.default.Component),Board=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return _react2.default.createElement('section',{className:'board'},_react2.default.createElement('div',{className:'container'},_react2.default.createElement('div',{className:'row outer',style:this.props.themesDisplay},_react2.default.createElement('div',{className:'col-12 quote'},_react2.default.createElement('p',null,_react2.default.createElement('span',null,'"'),this.props.quotesDisplay,_react2.default.createElement('span',null,'"'))),_react2.default.createElement('div',{className:'col-12 author'},_react2.default.createElement('h3',null,this.props.authorsDisplay)))))}}]),b}(_react2.default.Component),Footer=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return _react2.default.createElement('section',{className:'footer'},_react2.default.createElement('div',{className:'container'},_react2.default.createElement('div',{className:'row outer'},_react2.default.createElement('div',{className:'col-3 social_media'},_react2.default.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},_react2.default.createElement('div',{className:'social_icon google'},' ')),_react2.default.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},_react2.default.createElement('div',{className:'social_icon facebook'},' ')),_react2.default.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},_react2.default.createElement('div',{className:'social_icon twitter'},' ')),_react2.default.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},_react2.default.createElement('div',{className:'social_icon pinterest'},' '))),_react2.default.createElement('div',{className:'col-5 title'},this.props.title),_react2.default.createElement('div',{className:'col-4 author'},_react2.default.createElement('p',null,_react2.default.createElement('a',{href:'https://github.com/HGZwebdesign',target:'_blank',rel:'nofollow'},'HGZ\xA0webdesign'),'\xA0\xA9\xA02017')))))}}]),b}(_react2.default.Component);document.addEventListener('DOMContentLoaded',function(){_reactDom2.default.render(_react2.default.createElement(FakeQuotesCreator,{title:'Kreator Zmy\u015Blonych Cytat\xF3w',subtitle:'Przypisywanie dowolnych s\u0142\xF3w wielkim osobisto\u015Bciom jeszcze nigdy nie by\u0142o tak proste!',topics:_topics.topics,quotes:_quotes.quotes,authors:_authors.authors,themes:_themes.themes}),document.getElementById('app'))});
 
 /***/ }),
 /* 94 */
@@ -26548,31 +26112,34 @@ module.exports = onlyChild;
 
 /***/ }),
 /* 212 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "topics", function() { return topics; });
+const topics = [
+  "[Wybierz kategorię...]",
+  "Mądrość i głupota",
+  "Miłość",
+  "Pieniądze i bogactwo",
+  "Szczęście",
+  "Władza",
+  "Wolność i niewola"
+];
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var topics = ["[Wybierz kategorię...]", "Mądrość i głupota", "Miłość", "Pieniądze i bogactwo", "Szczęście", "Władza", "Wolność i niewola"];
-exports.topics = topics;
 
 /***/ }),
 /* 213 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var quotes = [{
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "quotes", function() { return quotes; });
+const quotes = [{
   t: "[Wybierz kategorię..]",
   q: "[Wybierz cytat..]",
-  a: "[Wybierz autora..]"
+  a: "[Wybierz autora..]",
 }, {
   t: "Miłość",
   q: "Ani czas, ani mądrość nie zmieniają człowieka – bo odmienić istotę ludzką zdolna jest wyłącznie miłość.",
@@ -26838,62 +26405,110 @@ var quotes = [{
   q: "Zwycięski rewolucjonista zostaje mężem stanu, pokonany jest tylko zbrodniarzem.",
   a: "Erich Fromm"
 }];
-exports.quotes = quotes;
+
+
 
 /***/ }),
 /* 214 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "authors", function() { return authors; });
+const authors = ["[Wybierz autora...]",
+  "Albert Camus",
+  "Albert Einstein",
+  "Andrzej Sapkowski",
+  "Anonim",
+  "Antoine de Saint-Exupéry",
+  "Arthur Schopenhauer",
+  "Bertrand Russell",
+  "Cyceron",
+  "Emil Zola",
+  "Erich Fromm",
+  "Eurypides",
+  "Fiodor Dostojewski",
+  "Francisco Goya",
+  "Fryderyk Engels",
+  "George Orwell",
+  "Hannah Arendt",
+  "Henry Ford",
+  "Horacy",
+  "Immanuel Kant",
+  "J.R.R. Tolkien",
+  "Jan Twardowski",
+  "Józef Stalin",
+  "Julian Tuwim",
+  "Karol Marks",
+  "Leonardo da Vinci",
+  "Lew Tołstoj",
+  "Mahatma Gandhi",
+  "Margaret Thatcher",
+  "Mikołaj Rej",
+  "Monteskiusz",
+  "Napoleon Bonaparte",
+  "Nelson Mandela",
+  "Oscar Wild",
+  "Oscar Wilde",
+  "Owidiusz",
+  "Paulo Coelho",
+  "Ryszard Kapuściński",
+  "Stanisław Lem",
+  "Stephen King",
+  "Steve Jobs",
+  "Terry Pratchett",
+  "William Szekspir",
+  "Wisława Szymborska",
+  "Wolter"
+];
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var authors = ["[Wybierz autora...]", "Albert Camus", "Albert Einstein", "Andrzej Sapkowski", "Anonim", "Antoine de Saint-Exupéry", "Arthur Schopenhauer", "Bertrand Russell", "Cyceron", "Emil Zola", "Erich Fromm", "Eurypides", "Fiodor Dostojewski", "Francisco Goya", "Fryderyk Engels", "George Orwell", "Hannah Arendt", "Henry Ford", "Horacy", "Immanuel Kant", "J.R.R. Tolkien", "Jan Twardowski", "Józef Stalin", "Julian Tuwim", "Karol Marks", "Leonardo da Vinci", "Lew Tołstoj", "Mahatma Gandhi", "Margaret Thatcher", "Mikołaj Rej", "Monteskiusz", "Napoleon Bonaparte", "Nelson Mandela", "Oscar Wild", "Oscar Wilde", "Owidiusz", "Paulo Coelho", "Ryszard Kapuściński", "Stanisław Lem", "Stephen King", "Steve Jobs", "Terry Pratchett", "William Szekspir", "Wisława Szymborska", "Wolter"];
-exports.authors = authors;
 
 /***/ }),
 /* 215 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "themes", function() { return themes; });
+const themes = [{
+    name: "[Wybierz szablon...]",
+    color: "#242424",
+    backgroundColor: ""
+  }, {
+    name: "Biały",
+    color: "#000000",
+    backgroundColor: "#FFFFFF"
+  },
+  {
+    name: "Niebieski",
+    color: "#FFFFFF",
+    backgroundColor: "#4E4CC3"
+  },
+  {
+    name: "Pomarańczowy",
+    color: "#000000",
+    backgroundColor: "#E78641"
+  },
+  {
+    name: "Różowy",
+    color: "#FBE1F9",
+    backgroundColor: "#D939C9"
+  },
+  {
+    name: "Zielony",
+    color: "#E3B457",
+    backgroundColor: "#395932"
+  },
+  {
+    name: "Czarny",
+    color: "#E3B457",
+    backgroundColor: "#000000"
+  }
+]
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var themes = [{
-  name: "[Wybierz szablon...]",
-  color: "#242424",
-  backgroundColor: ""
-}, {
-  name: "Biały",
-  color: "#000000",
-  backgroundColor: "#FFFFFF"
-}, {
-  name: "Niebieski",
-  color: "#FFFFFF",
-  backgroundColor: "#4E4CC3"
-}, {
-  name: "Pomarańczowy",
-  color: "#000000",
-  backgroundColor: "#E78641"
-}, {
-  name: "Różowy",
-  color: "#FBE1F9",
-  backgroundColor: "#D939C9"
-}, {
-  name: "Zielony",
-  color: "#E3B457",
-  backgroundColor: "#395932"
-}, {
-  name: "Czarny",
-  color: "#E3B457",
-  backgroundColor: "#000000"
-}];
 
-exports.themes = themes;
 
 /***/ })
 /******/ ]);

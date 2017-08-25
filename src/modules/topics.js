@@ -1,5 +1,5 @@
 const topics = [
-  "[Wybierz kategorię...]",
+  "Wybierz kategorię...",
   "Mądrość i głupota",
   "Miłość",
   "Pieniądze i bogactwo",

@@ -1,7 +1,7 @@
 const quotes = [{
-  t: "[Wybierz kategorię..]",
-  q: "[Wybierz cytat..]",
-  a: "[Wybierz autora..]",
+  t: "Wybierz kategorię..",
+  q: "Wybierz cytat..",
+  a: "Wybierz autora..",
 }, {
   t: "Miłość",
   q: "Ani czas, ani mądrość nie zmieniają człowieka – bo odmienić istotę ludzką zdolna jest wyłącznie miłość.",

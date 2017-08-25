@@ -1,4 +1,4 @@
-const authors = ["[Wybierz autora...]",
+const authors = ["Wybierz autora...",
   "Albert Camus",
   "Albert Einstein",
   "Andrzej Sapkowski",

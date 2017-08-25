@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PrintTemplate from 'react-print';
 
 import {topics} from "./modules/topics.js";
 import {quotes} from "./modules/quotes.js";
@@ -39,7 +38,7 @@ class FakeQuotesCreator extends React.Component {
   render() {
     return (
       <div>
-        <section className="dashboard" id="react-no-print">
+        <section className="dashboard">
           <div className="container">
             <div className="row outer">
 
@@ -168,7 +167,7 @@ class RandomBtn extends React.Component {
     return (
       <div className="col-2">
         <span>&nbsp;</span>
-        <button type="button" name="button" className={this.props.className} onClick={this.props.onClick}>Losuj
+        <button type="button" name="button" className={this.props.className} onClick={this.props.onClick}>LOSUJ
         </button>
       </div>
     );
@@ -234,7 +233,6 @@ class Footer extends React.Component {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-
   const title = "Kreator Zmyślonych Cytatów";
   const subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste!";
 

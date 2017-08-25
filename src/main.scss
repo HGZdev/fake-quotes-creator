@@ -1,24 +1,32 @@
-// @import "modules/reset";
+/**
+ * -----------------------------------------------------------------------
+ *                                  Fonts
+ * -----------------------------------------------------------------------
+ */
 
-// Color Palette
+@import url( 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin-ext');
 
-// $c1: #000000;
-// $c2: #fff;
-// $c4: rgba(#000000, 0);
-// $c7: #5B6A73;
-// $c5: #110C20;
-// $c3: #9DA9B0;
-// $c6: #607078;
+/**
+ * -----------------------------------------------------------------------
+ *                              Color Palette
+ * -----------------------------------------------------------------------
+ */
 
 $c1: #000000;
 $c2: #ffffff;
-$c4: rgba(#000000, 0);
-$c5: #171C40;
-$c6: #36428F;
-$c7: #4F5DBB;
-$c3: #828EDE;
+$c3: rgba(#000000, 0);
+$c4: #BDC5FF;
+$c5: #828EDE;
+$c6: #4F5DBB;
+$c7: #36428F;
+$c8: #171C40;
 
-// Reset CSS:
+/**
+ * -----------------------------------------------------------------------
+ *                                Reset CSS:
+ * -----------------------------------------------------------------------
+ */
+
 * {
   margin: 0;
   padding: 0;
@@ -36,9 +44,9 @@ $c3: #828EDE;
 
 body {
   line-height: 1;
-  background-color: $c5;
+  background-color: $c8;
   color: $c1;
-  font-family: 'Dekko', cursive;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 
 ol,
@@ -51,9 +59,13 @@ a {
   cursor: auto;
   color: $c1;
 }
-//
-// Global grid settings
-//
+
+/**
+ * -----------------------------------------------------------------------
+ *                           Global grid settings
+ * -----------------------------------------------------------------------
+ */
+
 $cols: 12;
 $width-base: (100%/$cols);
 
@@ -61,7 +73,7 @@ $width-base: (100%/$cols);
   width: 100%;
   max-width: 60rem;
   margin: 0 auto;
-  background-color: $c3;
+  background-color: $c5;
 }
 
 .row {
@@ -75,9 +87,7 @@ $width-base: (100%/$cols);
   width: 100%;
   min-height: 1px;
 }
-//
-// SMARTPHONE MEDIUM (min 480px)
-//
+
 @media only screen and (min-width: 480px) {
    @for $i from 1 through $cols{
     .col-#{$i} {
@@ -85,13 +95,17 @@ $width-base: (100%/$cols);
     }
   }
 }
-//
-// Sections
+
+/**
+ * -----------------------------------------------------------------------
+ *                            Sections settings
+ * -----------------------------------------------------------------------
+ */
 
 section.dashboard {
   .title {
     padding: 1rem 0.5rem 0;
-    background-color: $c6;
+    background-color: $c7;
     color: $c2;
 
     h1 {
@@ -101,31 +115,39 @@ section.dashboard {
 
   .subtitle {
     padding: 1rem 0.5rem;
-    background-color: $c6;
+    background-color: $c7;
     color: $c2;
 
     h2 {
       font-size: 1.6rem;
+      line-height: 2rem;
     }
   }
 
   form {
     padding: 1rem 0 0;
 
-    span {
-      padding: 0.5rem 0;
-      display: block;
-      font-size: 1.1rem;
-    }
-
     .inner > div {
       flex-grow: 1;
       padding: 0 0.5rem;
 
+      span {
+        padding: 0.5rem;
+        display: block;
+        font-size: 1.1rem;
+      }
+
       button,
       select {
+        padding: 0.7rem 0.5rem;
         width: 100%;
-        height: 2rem;
+        background-color: $c2;
+        border: 0;
+        border-radius: 20px;
+      }
+
+      button {
+        background-color: $c4;
       }
     }
   }
@@ -164,7 +186,7 @@ section.board {
 
 section.footer {
   .container {
-    background-color: $c7;
+    background-color: $c6;
     color: $c2;
     font-weight: bold;
 
@@ -221,9 +243,4 @@ section.footer {
       }
     }
   }
-}
-
-* {
-  // Border Test
-  // border: 1px solid #AD3F3F;
 }

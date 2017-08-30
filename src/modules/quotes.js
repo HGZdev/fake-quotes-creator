@@ -57,7 +57,7 @@ const quotes = [{
 }, {
   t: "Szczęście",
   q: "Gdy człowiek jest szczęśliwy, żyje w harmonii z samym sobą i swoim otoczeniem.",
-  a: "Oscar Wild"
+  a: "Oscar Wilde"
 }, {
   t: "Szczęście",
   q: "Gdy człowiek jest zbyt szczęśliwy, wciąż drży z niepokoju.",

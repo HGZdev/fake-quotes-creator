@@ -3,15 +3,12 @@
  *                                  Fonts
  * -----------------------------------------------------------------------
  */
-
 @import url( 'https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin-ext');
-
 /**
  * -----------------------------------------------------------------------
  *                              Color Palette
  * -----------------------------------------------------------------------
  */
-
 $c1: #000000;
 $c2: #ffffff;
 $c3: rgba(#000000, 0);
@@ -20,13 +17,11 @@ $c5: #828EDE;
 $c6: #4F5DBB;
 $c7: #36428F;
 $c8: #171C40;
-
 /**
  * -----------------------------------------------------------------------
  *                                Reset CSS:
  * -----------------------------------------------------------------------
  */
-
 * {
   margin: 0;
   padding: 0;
@@ -59,13 +54,11 @@ a {
   cursor: auto;
   color: $c1;
 }
-
 /**
  * -----------------------------------------------------------------------
  *                           Global grid settings
  * -----------------------------------------------------------------------
  */
-
 $cols: 12;
 $width-base: (100%/$cols);
 
@@ -87,7 +80,6 @@ $width-base: (100%/$cols);
   width: 100%;
   min-height: 1px;
 }
-
 @media only screen and (min-width: 480px) {
    @for $i from 1 through $cols{
     .col-#{$i} {
@@ -95,14 +87,12 @@ $width-base: (100%/$cols);
     }
   }
 }
-
 /**
  * -----------------------------------------------------------------------
  *                            Sections settings
  * -----------------------------------------------------------------------
  */
-
-section.dashboard {
+section.header {
   .title {
     padding: 1rem 0.5rem 0;
     background-color: $c7;
@@ -123,11 +113,13 @@ section.dashboard {
       line-height: 2rem;
     }
   }
+}
 
-  form {
+section.dashboard {
+  form.row.inner {
     padding: 1rem 0 0;
 
-    .inner > div {
+    & > div {
       flex-grow: 1;
       padding: 0 0.5rem;
 
@@ -185,61 +177,58 @@ section.board {
 }
 
 section.footer {
-  .container {
+  .container.row {
     background-color: $c6;
     color: $c2;
     font-weight: bold;
+    align-items: center;
+    text-align: center;
 
-    .row {
-      align-items: center;
-      text-align: center;
+    & > div {
+      padding: 0.5rem 0;
+    }
 
-      & > div {
-        padding: 0.5rem 0;
+    .social_media {
+      a {
+        display: inline-block;
+        padding: 0.2rem;
       }
 
-      .social_media {
-        a {
-          display: inline-block;
-          padding: 0.2rem;
-        }
-
-        .social_icon {
-          display: inline-block;
-          height: 1.5rem;
-          width: 1.5rem;
-          background-position: center;
-          background-size: 1.5em 1.5em;
-          background-repeat: no-repeat;
-        }
-
-        .google {
-          /*"Google plus logo" designed by Glypho from Flaticon*/
-          background-image: url('../dist/images/googleplus.png');
-        }
-
-        .facebook {
-          /*"Facebook logo" designed by Glypho from Flaticon*/
-          background-image: url('../dist/images/facebook.png');
-        }
-
-        .twitter {
-          /*"Twitter icon" designed by Glypho from Flaticon*/
-          background-image: url('../dist/images/twitter.png');
-        }
-
-        .pinterest {
-          /*"Pinterest logo" designed by Icomoon Free 2 from Flaticon*/
-          background-image: url('../dist/images/pinterest.png');
-        }
+      .social_icon {
+        display: inline-block;
+        height: 1.5rem;
+        width: 1.5rem;
+        background-position: center;
+        background-size: 1.5em 1.5em;
+        background-repeat: no-repeat;
       }
 
-      .title {}
+      .google {
+        /*"Google plus logo" designed by Glypho from Flaticon*/
+        background-image: url('../dist/images/googleplus.png');
+      }
 
-      .author {
-        a {
-          color: $c2;
-        }
+      .facebook {
+        /*"Facebook logo" designed by Glypho from Flaticon*/
+        background-image: url('../dist/images/facebook.png');
+      }
+
+      .twitter {
+        /*"Twitter icon" designed by Glypho from Flaticon*/
+        background-image: url('../dist/images/twitter.png');
+      }
+
+      .pinterest {
+        /*"Pinterest logo" designed by Icomoon Free 2 from Flaticon*/
+        background-image: url('../dist/images/pinterest.png');
+      }
+    }
+
+    .title {}
+
+    .author {
+      a {
+        color: $c2;
       }
     }
   }

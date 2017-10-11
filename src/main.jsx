@@ -1,176 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import {topics} from "./modules/topics.js";
-import {quotes} from "./modules/quotes.js";
-import {authors} from "./modules/authors.js";
-import {themes} from "./modules/themes.js";
-
-class FakeQuotesCreator extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      // Lists of values
-      topicsList: this.props.topics,
-      quotesList: this.props.quotes,
-      authorsList: this.props.authors,
-      themesList: this.props.themes,
-
-      // Form settings
-      topicsSelected: 0,
-      quotesSelected: 0,
-      authorsSelected: 0,
-      themesSelected: 0,
-
-      // Display settings
-      quotesDisplay: "[Wybierz cytat...]",
-      authorsDisplay: "[Wybierz autora...]",
-      themesDisplay: {
-        name: "",
-        color: "black",
-        backgroundColor: "white"
-      }
-    }
-    this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleRandomClick = this.handleRandomClick.bind(this);
-  }
-
-  render() {
-    return (
-      <div>
-        <section className="dashboard">
-          <div className="container">
-            <div className="row outer">
-
-              <Header className="col-12 title" title={this.props.title} size="h1"/>
-              <Header className="col-12 subtitle" title={this.props.subtitle} size="h2"/>
-
-              <form className="col-12" action="index.html" method="post" onSubmit={this.state.handleSubmit}>
-                <div className="row inner">
-                  <Select className="topics" label="Kategoria:" value={this.state.topicsSelected} list={this.state.topicsList} onChange={this.handleSelectChange}/>
-                  <Select className="quotes" label="Cytaty:" value={this.state.quotesSelected} list={this.state.quotesList} onChange={this.handleSelectChange}/>
-                  <Select className="authors" label="Autorzy:" value={this.state.authorsSelected} list={this.state.authorsList} onChange={this.handleSelectChange}/>
-                  <Select className="themes" label="Szablony:" value={this.state.themesSelected} list={this.state.themesList} onChange={this.handleSelectChange}/>
-                  <RandomBtn className="randomBtn" onClick={this.handleRandomClick}/>
-                </div>
-              </form>
-
-            </div>
-          </div>
-        </section>
-
-        <Board quotesDisplay={this.state.quotesDisplay} authorsDisplay={this.state.authorsDisplay} themesDisplay={this.state.themesDisplay}/>
-        <Footer title={this.props.title}/>
-
-      </div>
-    );
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-  }
-
-  handleSelectChange = (event) => {
-    let value = event.target.value;
-    let className = event.target.className;
-    let newState = {};
-    let quotesListNew;
-
-    // Quotes filtered by topics
-    if (className === "topics") {
-      if (value === "0") {
-        quotesListNew = this.props.quotes;
-      } else {
-        quotesListNew = [this.props.quotes[0]];
-        for (var i = 0; i < this.props.quotes.length; i++) {
-          if (this.props.quotes[i].t === this.state.topicsList[value]) {
-            quotesListNew.push(this.props.quotes[i]);
-          }
-        }
-      }
-      newState = {
-        quotesSelected: 0,
-        quotesList: quotesListNew,
-        topicsSelected: value,
-        topicsDisplay: this.state.topicsList[value]
-      }
-    } else {
-      newState = {
-        [className + "Selected"]: value,
-        [className + "Display"]: this.state[className + "List"][value].q || this.state[className + "List"][value]
-      }
-    }
-    // console.log(value, className, setState);
-    this.setState(newState);
-  }
-
-  handleRandomClick = (event) => {
-    let className = ["quotes", "authors", "themes"];
-    let newState = {};
-    let max,
-      random;
-
-    for (var i = 0; i < className.length; i++) {
-      max = this.state[className[i] + "List"].length - 1;
-      random = Math.floor(Math.random() * max + 1);
-
-      newState["topicsSelected"] = 0;
-      newState["quotesList"] = this.props.quotes;
-      newState[className[i] + "Selected"] = random;
-
-      (className[i] === "quotes")
-        ? newState["quotesDisplay"] = this.state.quotesList[random].q
-        : newState[
-          [className[i] + "Display"]
-        ] = this.state[className[i] + "List"][random];
-    }
-    // console.log(newState);
-    this.setState(newState);
-  }
-}
+import {quotesDB} from "./modules/quotesDB.js";
+import {themesDB} from "./modules/themesDB.js";
 
 class Header extends React.Component {
   render() {
     return (
-      <div className={this.props.className}>
-        <this.props.size>{this.props.title}</this.props.size>
-      </div>
+      <section className="header">
+        <div className="container row outer">
+          <div className='col-12 title'>
+            <h1>Kreator Zmyślonych Cytatów</h1>
+          </div>
+          <div className='col-12 subtitle'>
+            <h2>Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste!</h2>
+          </div>
+        </div>
+      </section>
     );
   }
 }
 
-class Select extends React.Component {
+class Form extends React.Component {
   render() {
-    let list = this.props.list.map((el, idx) => {
-      if (this.props.className == "quotes") {
-        return <option key={idx} value={idx}>{el.q}</option>
-      } else if (this.props.className == "themes") {
-        return <option key={idx} value={idx}>{el.name}</option>
-      } else {
-        return <option key={idx} value={idx}>{el}</option>
-      }
-    });
-
+    let labelsArray = ['Kategoria:', 'Cytaty:', 'Autorzy:', 'Szablony:'];
+    let classNamesArray = ['categories', 'quotes', 'authors', 'themes'];
+    let selectionMap = classNamesArray.map((el, i) => {
+      return <Select key={el} label={labelsArray[i]} className={el} valuesArray={this.props.valuesArray} valuesSelected={this.props.valuesSelected} onChange={this.props.onChange}/>;
+    })
     return (
-      <div className="col-2">
-        <span>{this.props.label}</span>
-        <select className={this.props.className} name={this.props.className} value={this.props.value} onChange={this.props.onChange}>
-          {list}
-        </select>
-      </div>
-    );
-  }
-}
-
-class RandomBtn extends React.Component {
-  render() {
-    return (
-      <div className="col-2">
-        <span>&nbsp;</span>
-        <button type="button" name="button" className={this.props.className} onClick={this.props.onClick}>LOSUJ
-        </button>
-      </div>
-    );
+      <section className="dashboard">
+        <div className="container row outer">
+          <form className="col-12 row inner" action="index.html" method="post" onSubmit={this.props.onSubmit}>
+            {selectionMap}
+            <RandomBtn className="random-button" onClick={this.props.onClick}/>
+          </form>
+        </div>
+      </section>
+    )
   }
 }
 
@@ -178,17 +45,17 @@ class Board extends React.Component {
   render() {
     return (
       <section className="board">
-        <div className="container">
-          <div className="row outer" style={this.props.themesDisplay}>
+        <div className="container ">
+          <div className="row outer" style={this.props.valuesDisplay.themes}>
             <div className="col-12 quote">
               <p>
                 <span>"</span>
-                {this.props.quotesDisplay}
+                {this.props.valuesDisplay.quotes}
                 <span>"</span>
               </p>
             </div>
             <div className="col-12 author">
-              <h3>{this.props.authorsDisplay}</h3>
+              <h3>{this.props.valuesDisplay.authors}</h3>
             </div>
           </div>
         </div>
@@ -201,30 +68,26 @@ class Footer extends React.Component {
   render() {
     return (
       <section className="footer">
-        <div className="container">
-          <div className="row outer">
-
-            <div className="col-3 social_media">
-              <a href="#" target="_blank" rel="nofollow">
-                <div className="social_icon google"> </div>
-              </a>
-              <a href="#" target="_blank" rel="nofollow">
-                <div className="social_icon facebook"> </div>
-              </a>
-              <a href="#" target="_blank" rel="nofollow">
-                <div className="social_icon twitter"> </div>
-              </a>
-              <a href="#" target="_blank" rel="nofollow">
-                <div className="social_icon pinterest"> </div>
-              </a>
-            </div>
-            <div className="col-5 title">{this.props.title}</div>
-            <div className="col-4 author">
-              <p>
-                <a href="https://github.com/HGZwebdesign" target="_blank" rel="nofollow">HGZ&nbsp;webdesign</a>&nbsp;&copy;&nbsp;2017
-              </p>
-            </div>
-
+        <div className="container row outer">
+          <div className="col-3 social_media">
+            <a href="#" target="_blank" rel="nofollow">
+              <div className="social_icon google"></div>
+            </a>
+            <a href="#" target="_blank" rel="nofollow">
+              <div className="social_icon facebook"></div>
+            </a>
+            <a href="#" target="_blank" rel="nofollow">
+              <div className="social_icon twitter"></div>
+            </a>
+            <a href="#" target="_blank" rel="nofollow">
+              <div className="social_icon pinterest"></div>
+            </a>
+          </div>
+          <div className="col-5 title">Kreator Zmyślonych Cytatów</div>
+          <div className="col-4 author">
+            <p>
+              <a href="https://github.com/HGZwebdesign" target="_blank" rel="nofollow">HGZ&nbsp;webdesign</a>&nbsp;&copy;&nbsp;2017
+            </p>
           </div>
         </div>
       </section>
@@ -232,10 +95,184 @@ class Footer extends React.Component {
   }
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  const title = "Kreator Zmyślonych Cytatów";
-  const subtitle = "Przypisywanie dowolnych słów wielkim osobistościom jeszcze nigdy nie było tak proste!";
+class Select extends React.Component {
+  render() {
+    let valuesArray = this.props.valuesArray[this.props.className];
+    let optionsMap = valuesArray.map((el, i) => {
+      return <option key={i} value={i}>{el.name || el}</option>
+    });
+    return (
+      <div className="col-2">
+        <span>{this.props.label}</span>
+        <select className={this.props.className} name={this.props.className} value={this.props.valuesSelected[this.props.className]} onChange={this.props.onChange}>
+          {optionsMap}
+        </select>
+      </div>
+    );
+  }
+}
 
+class RandomBtn extends React.Component {
+  render() {
+    return (
+      <div className="col-2">
+        <span>&nbsp;</span>
+        <button type="button" name={this.props.className} className={this.props.className} onClick={this.props.onClick}>LOSUJ
+        </button>
+      </div>
+    );
+  }
+}
+
+class FakeQuotesCreator extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      valuesDB: quotesDB,
+      themesDB: themesDB,
+      categoriesDB: "",
+      valuesArray: {},
+      valuesSelected: {},
+      valuesDisplay: {}
+    }
+  }
+
+  render() {
+    return (
+      <div>
+        <Header/>
+        <Form className="col-12 row inner" valuesArray={this.state.valuesArray} themesArray={this.state.themesArray} valuesSelected={this.state.valuesSelected} onSubmit={this.state.handleSubmit} onChange={this.handleSelectChange} onClick={this.handleRandomClick}/>
+        <Board valuesDisplay={this.state.valuesDisplay}/>
+        <Footer/>
+      </div>
+    );
+  }
+
+  componentWillMount() {
+    let valuesDB = this.state.valuesDB;
+    let newState = {
+      categoriesDB: {},
+      valuesArray: {}
+    };
+
+    // Set valuesArray
+    newState = this.mapValues();
+
+    // Set categoriesDB
+    newState.categoriesDB = this.valuesToArray(valuesDB, 'c', 'Wybierz kategorię...');
+
+    this.setState(newState);
+  }
+
+  mapValues = (filterBy) => {
+    // Set valuesArray and reset valuesSelected and valuesDisplay
+    let valuesDB = this.state.valuesDB;
+    let newState = {
+      valuesArray: {
+        categories: this.valuesToArray(valuesDB, 'c', 'Wybierz kategorię...'),
+        quotes: this.valuesToArray(valuesDB, 'q', 'Wybierz cytat...', filterBy),
+        authors: this.valuesToArray(valuesDB, 'a', 'Wybierz autora...'),
+        themes: this.state.themesDB
+      },
+      valuesSelected: {
+        categories: 0,
+        quotes: 0,
+        authors: 0,
+        themes: 0
+      },
+      valuesDisplay: {
+        quotes: "Wybierz cytat",
+        authors: "Wybierz autora",
+        themes: {
+          name: "Wybierz szablon...",
+          color: "#242424",
+          backgroundColor: "#FFFFFF"
+        }
+      }
+    }
+
+    return newState;
+  }
+
+  valuesToArray = (database, element, text, filterBy) => {
+    let categoriesDB = this.state.categoriesDB;
+
+    // Prepare raw array (filter by category if selected)
+    let array = database.map((e, i) => {
+      if (filterBy && filterBy != 0) {
+        if (categoriesDB[filterBy] === e.c) {
+          return e[element].trim();
+        }
+      } else {
+        return e[element].trim();
+      }
+    })
+
+    // Sort array, remove duplicates, undefined values and add initial selected option
+    array = array.sort().filter((x, i, a) => !i || x != a[i - 1]);
+    array = array.filter(n => n);
+    if (text) {
+      array.unshift(text);
+    }
+    return array;
+  }
+
+  handleSelectChange = (event) => {
+    let value = event.target.value;
+    let className = event.target.className;
+    let classNamesArray = ['categories', 'quotes', 'authors', 'themes'];
+    let newState = {
+      valuesArray: this.state.valuesArray,
+      valuesSelected: {},
+      valuesDisplay: {}
+    };
+
+    // Filter quotes by category (if it was changed => update mapValues)
+    if (className === "categories" && value !== 0) {
+      newState = this.mapValues(value);
+    }
+
+    // Set values to select and display
+    for (var i = 0; i < classNamesArray.length; i++) {
+      if (classNamesArray[i] === className) {
+        newState["valuesSelected"][classNamesArray[i]] = value;
+        newState["valuesDisplay"][classNamesArray[i]] = this.state.valuesArray[className][value];
+      } else {
+        newState["valuesSelected"][classNamesArray[i]] = this.state.valuesSelected[classNamesArray[i]];
+        newState["valuesDisplay"][classNamesArray[i]] = this.state.valuesDisplay[classNamesArray[i]];
+      }
+    }
+
+    // If category was changed => reset selected quote
+    if (className === "categories") {
+      newState["valuesSelected"]["quotes"] = 0;
+    }
+
+    this.setState(newState);
+  }
+
+  handleRandomClick = (event) => {
+    let classNamesArray = ['quotes', 'authors', 'themes'];
+
+    // Reset valuesArray, selection and display board
+    let newState = this.mapValues();
+
+    // Random values generator + set values to select and display
+    for (var i = 0; i < classNamesArray.length; i++) {
+      let tempValuesArray = newState['valuesArray'][classNamesArray[i]];
+      let random = Math.floor(Math.random() * (tempValuesArray.length - 1) + 1);
+      newState["valuesSelected"][classNamesArray[i]] = random;
+      newState["valuesDisplay"][classNamesArray[i]] = tempValuesArray[random];
+    }
+    this.setState(newState);
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
   ReactDOM.render(
-    <FakeQuotesCreator title={title} subtitle={subtitle} topics={topics} quotes={quotes} authors={authors} themes={themes}/>, document.getElementById('app'));
+    <FakeQuotesCreator/>, document.getElementById('app'));
 });

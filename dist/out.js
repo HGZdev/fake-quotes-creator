@@ -260,11 +260,9 @@ process.umask = function() { return 0; };
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -321,12 +319,10 @@ module.exports = invariant;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-2015, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -393,11 +389,9 @@ module.exports = warning;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -533,12 +527,10 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -735,11 +727,9 @@ module.exports = ReactDOMComponentTree;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -775,12 +765,10 @@ module.exports = ExecutionEnvironment;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2016-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -1160,12 +1148,10 @@ module.exports = ReactComponentTreeHook;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2016-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -1193,11 +1179,9 @@ module.exports = { debugTool: debugTool };
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -1234,12 +1218,10 @@ module.exports = emptyFunction;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -1268,12 +1250,10 @@ module.exports = ReactCurrentOwner;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -1481,7 +1461,7 @@ function enqueueUpdate(component) {
  * if no updates are currently being performed.
  */
 function asap(callback, context) {
-  !batchingStrategy.isBatchingUpdates ? process.env.NODE_ENV !== 'production' ? invariant(false, 'ReactUpdates.asap: Can\'t enqueue an asap callback in a context whereupdates are not being batched.') : _prodInvariant('125') : void 0;
+  invariant(batchingStrategy.isBatchingUpdates, "ReactUpdates.asap: Can't enqueue an asap callback in a context where" + 'updates are not being batched.');
   asapCallbackQueue.enqueue(callback, context);
   asapEnqueued = true;
 }
@@ -1525,12 +1505,10 @@ module.exports = ReactUpdates;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -1706,6 +1684,33 @@ _assign(SyntheticEvent.prototype, {
 
 SyntheticEvent.Interface = EventInterface;
 
+/**
+ * Helper to reduce boilerplate when creating subclasses.
+ *
+ * @param {function} Class
+ * @param {?object} Interface
+ */
+SyntheticEvent.augmentClass = function (Class, Interface) {
+  var Super = this;
+
+  var E = function () {};
+  E.prototype = Super.prototype;
+  var prototype = new E();
+
+  _assign(prototype, Class.prototype);
+  Class.prototype = prototype;
+  Class.prototype.constructor = Class;
+
+  Class.Interface = _assign({}, Super.Interface, Interface);
+  Class.augmentClass = Super.augmentClass;
+
+  PooledClass.addPoolingTo(Class, PooledClass.fourArgumentPooler);
+};
+
+/** Proxying after everything set on SyntheticEvent
+  * to resolve Proxy issue on some WebKit browsers
+  * in which some Event properties are set to undefined (GH#10010)
+  */
 if (process.env.NODE_ENV !== 'production') {
   if (isProxySupported) {
     /*eslint-disable no-func-assign */
@@ -1729,28 +1734,6 @@ if (process.env.NODE_ENV !== 'production') {
     /*eslint-enable no-func-assign */
   }
 }
-/**
- * Helper to reduce boilerplate when creating subclasses.
- *
- * @param {function} Class
- * @param {?object} Interface
- */
-SyntheticEvent.augmentClass = function (Class, Interface) {
-  var Super = this;
-
-  var E = function () {};
-  E.prototype = Super.prototype;
-  var prototype = new E();
-
-  _assign(prototype, Class.prototype);
-  Class.prototype = prototype;
-  Class.prototype.constructor = Class;
-
-  Class.Interface = _assign({}, Super.Interface, Interface);
-  Class.augmentClass = Super.augmentClass;
-
-  PooledClass.addPoolingTo(Class, PooledClass.fourArgumentPooler);
-};
 
 PooledClass.addPoolingTo(SyntheticEvent, PooledClass.fourArgumentPooler);
 
@@ -1797,12 +1780,10 @@ function getPooledWarningPropertyDefinition(propName, getVal) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -2012,12 +1993,10 @@ module.exports = DOMProperty;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -2359,12 +2338,10 @@ module.exports = ReactElement;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -2477,12 +2454,10 @@ module.exports = PooledClass;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -2616,11 +2591,9 @@ module.exports = React;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -2659,12 +2632,10 @@ module.exports = reactProdInvariant;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -2831,12 +2802,10 @@ module.exports = ReactReconciler;
 
 "use strict";
 /**
- * Copyright 2015-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -2954,12 +2923,10 @@ module.exports = DOMLazyTree;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -3094,12 +3061,10 @@ module.exports = EventPropagators;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -3374,12 +3339,10 @@ module.exports = EventPluginHub;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -3438,12 +3401,10 @@ module.exports = SyntheticUIEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -3489,12 +3450,10 @@ module.exports = ReactInstanceMap;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -3522,11 +3481,9 @@ module.exports = canDefineProperty;
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -3547,12 +3504,10 @@ module.exports = emptyObject;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -3806,12 +3761,10 @@ module.exports = EventPluginRegistry;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -4040,12 +3993,10 @@ module.exports = TransactionImpl;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -4117,12 +4068,10 @@ module.exports = SyntheticMouseEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -4220,12 +4169,10 @@ module.exports = setInnerHTML;
 
 "use strict";
 /**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2016-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * Based on the escape-html library, which is used under the MIT License below:
  *
@@ -4347,12 +4294,10 @@ module.exports = escapeTextContentForBrowser;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -4676,12 +4621,10 @@ module.exports = ReactBrowserEventEmitter;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-2015, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -4747,12 +4690,10 @@ module.exports = lowPriorityWarning;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -4979,12 +4920,10 @@ module.exports = EventPluginUtils;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -5041,7 +4980,9 @@ if (process.env.NODE_ENV !== 'production') {
   if (typeof window !== 'undefined' && typeof window.dispatchEvent === 'function' && typeof document !== 'undefined' && typeof document.createEvent === 'function') {
     var fakeNode = document.createElement('react');
     ReactErrorUtils.invokeGuardedCallback = function (name, func, a) {
-      var boundFunc = func.bind(null, a);
+      var boundFunc = function () {
+        func(a);
+      };
       var evtType = 'react-' + name;
       fakeNode.addEventListener(evtType, boundFunc, false);
       var evt = document.createEvent('Event');
@@ -5061,12 +5002,10 @@ module.exports = ReactErrorUtils;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5101,12 +5040,10 @@ module.exports = getEventTarget;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5166,12 +5103,10 @@ module.exports = isEventSupported;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5214,12 +5149,10 @@ module.exports = getEventModifierState;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5446,12 +5379,10 @@ module.exports = DOMChildrenOperations;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5471,12 +5402,10 @@ module.exports = DOMNamespaces;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5508,12 +5437,10 @@ module.exports = createMicrosoftUnsafeLocalFunction;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5652,12 +5579,10 @@ module.exports = LinkedValueUtils;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -5703,11 +5628,9 @@ module.exports = ReactComponentEnvironment;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  * 
@@ -5775,12 +5698,10 @@ module.exports = shallowEqual;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -5822,12 +5743,10 @@ module.exports = shouldUpdateReactComponent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -5886,12 +5805,10 @@ module.exports = KeyEscapeUtils;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2015-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -6126,12 +6043,10 @@ module.exports = ReactUpdateQueue;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2015-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -6503,12 +6418,10 @@ module.exports = validateDOMNesting;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -6558,12 +6471,10 @@ module.exports = getEventCharCode;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -6707,12 +6618,10 @@ module.exports = {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2015-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -6808,12 +6717,10 @@ module.exports = ReactNoopUpdateQueue;
 
 "use strict";
 /**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -6833,12 +6740,10 @@ module.exports = REACT_ELEMENT_TYPE;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -6879,12 +6784,10 @@ module.exports = getIteratorFn;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7140,12 +7043,10 @@ module.exports = ReactElementValidator;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 
@@ -7168,12 +7069,10 @@ module.exports = function(isValidElement) {
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 
@@ -7189,12 +7088,10 @@ module.exports = ReactPropTypesSecret;
 
 "use strict";
 /**
- * Copyright 2015-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7212,12 +7109,10 @@ module.exports = ReactDOMComponentFlags;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -7276,12 +7171,10 @@ module.exports = accumulateInto;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -7312,12 +7205,10 @@ module.exports = forEachAccumulated;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7350,12 +7241,10 @@ module.exports = getTextContentAccessor;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -7475,12 +7364,10 @@ module.exports = PooledClass.addPoolingTo(CallbackQueue);
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -7502,12 +7389,10 @@ module.exports = ReactFeatureFlags;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7530,7 +7415,7 @@ function attachTracker(inst, tracker) {
 }
 
 function detachTracker(inst) {
-  delete inst._wrapperState.valueTracker;
+  inst._wrapperState.valueTracker = null;
 }
 
 function getValueFromNode(node) {
@@ -7630,12 +7515,10 @@ module.exports = inputValueTracking;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -7686,12 +7569,10 @@ module.exports = isTextInputElement;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7716,12 +7597,10 @@ module.exports = ViewportMetrics;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7774,11 +7653,9 @@ module.exports = setTextContent;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7805,12 +7682,10 @@ module.exports = focusNode;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -7829,6 +7704,7 @@ var isUnitlessNumber = {
   boxFlexGroup: true,
   boxOrdinalGroup: true,
   columnCount: true,
+  columns: true,
   flex: true,
   flexGrow: true,
   flexPositive: true,
@@ -7964,12 +7840,10 @@ module.exports = CSSProperty;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -8205,12 +8079,10 @@ module.exports = DOMPropertyOperations;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -8227,12 +8099,10 @@ module.exports = ReactPropTypesSecret;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -8433,12 +8303,10 @@ module.exports = ReactDOMSelect;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -8568,12 +8436,10 @@ module.exports = instantiateReactComponent;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -8614,12 +8480,10 @@ module.exports = ReactNodeTypes;
 
 "use strict";
 /**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -8649,12 +8513,10 @@ module.exports = ReactEmptyComponent;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -8723,12 +8585,10 @@ module.exports = ReactHostComponent;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -8908,11 +8768,9 @@ module.exports = traverseAllChildren;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -8988,12 +8846,10 @@ module.exports = EventListener;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -9119,11 +8975,9 @@ module.exports = ReactInputSelection;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -9160,12 +9014,10 @@ module.exports = getActiveElement;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -9704,12 +9556,10 @@ module.exports = ReactMount;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -10218,11 +10068,471 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom__ = __webpack_require__(100);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_react_dom___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_react_dom__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_topics_js__ = __webpack_require__(186);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_quotes_js__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modules_authors_js__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__modules_themes_js__ = __webpack_require__(189);
-var _createClass=function(){function a(a,b){for(var c,d=0;d<b.length;d++)c=b[d],c.enumerable=c.enumerable||!1,c.configurable=!0,'value'in c&&(c.writable=!0),Object.defineProperty(a,c.key,c)}return function(b,c,d){return c&&a(b.prototype,c),d&&a(b,d),b}}();function _defineProperty(a,b,c){return b in a?Object.defineProperty(a,b,{value:c,enumerable:!0,configurable:!0,writable:!0}):a[b]=c,a}function _classCallCheck(a,b){if(!(a instanceof b))throw new TypeError('Cannot call a class as a function')}function _possibleConstructorReturn(a,b){if(!a)throw new ReferenceError('this hasn\'t been initialised - super() hasn\'t been called');return b&&('object'==typeof b||'function'==typeof b)?b:a}function _inherits(a,b){if('function'!=typeof b&&null!==b)throw new TypeError('Super expression must either be null or a function, not '+typeof b);a.prototype=Object.create(b&&b.prototype,{constructor:{value:a,enumerable:!1,writable:!0,configurable:!0}}),b&&(Object.setPrototypeOf?Object.setPrototypeOf(a,b):a.__proto__=b)}var FakeQuotesCreator=function(a){function b(a){_classCallCheck(this,b);var c=_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).call(this,a));return c.handleSubmit=function(a){a.preventDefault()},c.handleSelectChange=function(a){var b,d=a.target.value,e=a.target.className,f={};if('topics'===e){if('0'===d)b=c.props.quotes;else{b=[c.props.quotes[0]];for(var g=0;g<c.props.quotes.length;g++)c.props.quotes[g].t===c.state.topicsList[d]&&b.push(c.props.quotes[g])}f={quotesSelected:0,quotesList:b,topicsSelected:d,topicsDisplay:c.state.topicsList[d]}}else{var h;f=(h={},_defineProperty(h,e+'Selected',d),_defineProperty(h,e+'Display',c.state[e+'List'][d].q||c.state[e+'List'][d]),h)}c.setState(f)},c.handleRandomClick=function(){for(var a=['quotes','authors','themes'],b={},d=void 0,e=void 0,f=0;f<a.length;f++)d=c.state[a[f]+'List'].length-1,e=Math.floor(Math.random()*d+1),b.topicsSelected=0,b.quotesList=c.props.quotes,b[a[f]+'Selected']=e,'quotes'===a[f]?b.quotesDisplay=c.state.quotesList[e].q:b[[a[f]+'Display']]=c.state[a[f]+'List'][e];c.setState(b)},c.state={topicsList:c.props.topics,quotesList:c.props.quotes,authorsList:c.props.authors,themesList:c.props.themes,topicsSelected:0,quotesSelected:0,authorsSelected:0,themesSelected:0,quotesDisplay:'[Wybierz cytat...]',authorsDisplay:'[Wybierz autora...]',themesDisplay:{name:'',color:'black',backgroundColor:'white'}},c.handleSelectChange=c.handleSelectChange.bind(c),c.handleRandomClick=c.handleRandomClick.bind(c),c}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('section',{className:'dashboard'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'container'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'row outer'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Header,{className:'col-12 title',title:this.props.title,size:'h1'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Header,{className:'col-12 subtitle',title:this.props.subtitle,size:'h2'}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('form',{className:'col-12',action:'index.html',method:'post',onSubmit:this.state.handleSubmit},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'row inner'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Select,{className:'topics',label:'Kategoria:',value:this.state.topicsSelected,list:this.state.topicsList,onChange:this.handleSelectChange}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Select,{className:'quotes',label:'Cytaty:',value:this.state.quotesSelected,list:this.state.quotesList,onChange:this.handleSelectChange}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Select,{className:'authors',label:'Autorzy:',value:this.state.authorsSelected,list:this.state.authorsList,onChange:this.handleSelectChange}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Select,{className:'themes',label:'Szablony:',value:this.state.themesSelected,list:this.state.themesList,onChange:this.handleSelectChange}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(RandomBtn,{className:'randomBtn',onClick:this.handleRandomClick})))))),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Board,{quotesDisplay:this.state.quotesDisplay,authorsDisplay:this.state.authorsDisplay,themesDisplay:this.state.themesDisplay}),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Footer,{title:this.props.title}))}}]),b}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component),Header=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:this.props.className},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(this.props.size,null,this.props.title))}}]),b}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component),Select=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){var a=this,b=this.props.list.map(function(b,c){return'quotes'==a.props.className?__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('option',{key:c,value:c},b.q):'themes'==a.props.className?__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('option',{key:c,value:c},b.name):__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('option',{key:c,value:c},b)});return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'col-2'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span',null,this.props.label),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('select',{className:this.props.className,name:this.props.className,value:this.props.value,onChange:this.props.onChange},b))}}]),b}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component),RandomBtn=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'col-2'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span',null,'\xA0'),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('button',{type:'button',name:'button',className:this.props.className,onClick:this.props.onClick},'LOSUJ'))}}]),b}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component),Board=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('section',{className:'board'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'container'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'row outer',style:this.props.themesDisplay},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'col-12 quote'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('p',null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span',null,'"'),this.props.quotesDisplay,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('span',null,'"'))),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'col-12 author'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('h3',null,this.props.authorsDisplay)))))}}]),b}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component),Footer=function(a){function b(){return _classCallCheck(this,b),_possibleConstructorReturn(this,(b.__proto__||Object.getPrototypeOf(b)).apply(this,arguments))}return _inherits(b,a),_createClass(b,[{key:'render',value:function render(){return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('section',{className:'footer'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'container'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'row outer'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'col-3 social_media'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'social_icon google'},' ')),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'social_icon facebook'},' ')),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'social_icon twitter'},' ')),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a',{href:'#',target:'_blank',rel:'nofollow'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'social_icon pinterest'},' '))),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'col-5 title'},this.props.title),__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div',{className:'col-4 author'},__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('p',null,__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('a',{href:'https://github.com/HGZwebdesign',target:'_blank',rel:'nofollow'},'HGZ\xA0webdesign'),'\xA0\xA9\xA02017')))))}}]),b}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);document.addEventListener('DOMContentLoaded',function(){__WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(FakeQuotesCreator,{title:'Kreator Zmy\u015Blonych Cytat\xF3w',subtitle:'Przypisywanie dowolnych s\u0142\xF3w wielkim osobisto\u015Bciom jeszcze nigdy nie by\u0142o tak proste!',topics:__WEBPACK_IMPORTED_MODULE_2__modules_topics_js__["a" /* topics */],quotes:__WEBPACK_IMPORTED_MODULE_3__modules_quotes_js__["a" /* quotes */],authors:__WEBPACK_IMPORTED_MODULE_4__modules_authors_js__["a" /* authors */],themes:__WEBPACK_IMPORTED_MODULE_5__modules_themes_js__["a" /* themes */]}),document.getElementById('app'))});
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_quotesDB_js__ = __webpack_require__(186);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_themesDB_js__ = __webpack_require__(187);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+
+
+
+
+
+
+var Header = function (_React$Component) {
+  _inherits(Header, _React$Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'section',
+        { className: 'header' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'container row outer' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-12 title' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'h1',
+              null,
+              'Kreator Zmy\u015Blonych Cytat\xF3w'
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-12 subtitle' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'h2',
+              null,
+              'Przypisywanie dowolnych s\u0142\xF3w wielkim osobisto\u015Bciom jeszcze nigdy nie by\u0142o tak proste!'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Header;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var Form = function (_React$Component2) {
+  _inherits(Form, _React$Component2);
+
+  function Form() {
+    _classCallCheck(this, Form);
+
+    return _possibleConstructorReturn(this, (Form.__proto__ || Object.getPrototypeOf(Form)).apply(this, arguments));
+  }
+
+  _createClass(Form, [{
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      var labelsArray = ['Kategoria:', 'Cytaty:', 'Autorzy:', 'Szablony:'];
+      var classNamesArray = ['categories', 'quotes', 'authors', 'themes'];
+      var selectionMap = classNamesArray.map(function (el, i) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Select, { key: el, label: labelsArray[i], className: el, valuesArray: _this3.props.valuesArray, valuesSelected: _this3.props.valuesSelected, onChange: _this3.props.onChange });
+      });
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'section',
+        { className: 'dashboard' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'container row outer' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'form',
+            { className: 'col-12 row inner', action: 'index.html', method: 'post', onSubmit: this.props.onSubmit },
+            selectionMap,
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(RandomBtn, { className: 'random-button', onClick: this.props.onClick })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Form;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var Board = function (_React$Component3) {
+  _inherits(Board, _React$Component3);
+
+  function Board() {
+    _classCallCheck(this, Board);
+
+    return _possibleConstructorReturn(this, (Board.__proto__ || Object.getPrototypeOf(Board)).apply(this, arguments));
+  }
+
+  _createClass(Board, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'section',
+        { className: 'board' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'container ' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'row outer', style: this.props.valuesDisplay.themes },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'col-12 quote' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'p',
+                null,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'span',
+                  null,
+                  '"'
+                ),
+                this.props.valuesDisplay.quotes,
+                __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                  'span',
+                  null,
+                  '"'
+                )
+              )
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'div',
+              { className: 'col-12 author' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'h3',
+                null,
+                this.props.valuesDisplay.authors
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Board;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var Footer = function (_React$Component4) {
+  _inherits(Footer, _React$Component4);
+
+  function Footer() {
+    _classCallCheck(this, Footer);
+
+    return _possibleConstructorReturn(this, (Footer.__proto__ || Object.getPrototypeOf(Footer)).apply(this, arguments));
+  }
+
+  _createClass(Footer, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'section',
+        { className: 'footer' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'div',
+          { className: 'container row outer' },
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-3 social_media' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: '#', target: '_blank', rel: 'nofollow' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'social_icon google' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: '#', target: '_blank', rel: 'nofollow' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'social_icon facebook' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: '#', target: '_blank', rel: 'nofollow' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'social_icon twitter' })
+            ),
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'a',
+              { href: '#', target: '_blank', rel: 'nofollow' },
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement('div', { className: 'social_icon pinterest' })
+            )
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-5 title' },
+            'Kreator Zmy\u015Blonych Cytat\xF3w'
+          ),
+          __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+            'div',
+            { className: 'col-4 author' },
+            __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+              'p',
+              null,
+              __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+                'a',
+                { href: 'https://github.com/HGZwebdesign', target: '_blank', rel: 'nofollow' },
+                'HGZ\xA0webdesign'
+              ),
+              '\xA0\xA9\xA02017'
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Footer;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var Select = function (_React$Component5) {
+  _inherits(Select, _React$Component5);
+
+  function Select() {
+    _classCallCheck(this, Select);
+
+    return _possibleConstructorReturn(this, (Select.__proto__ || Object.getPrototypeOf(Select)).apply(this, arguments));
+  }
+
+  _createClass(Select, [{
+    key: 'render',
+    value: function render() {
+      var valuesArray = this.props.valuesArray[this.props.className];
+      var optionsMap = valuesArray.map(function (el, i) {
+        return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'option',
+          { key: i, value: i },
+          el.name || el
+        );
+      });
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-2' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'span',
+          null,
+          this.props.label
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'select',
+          { className: this.props.className, name: this.props.className, value: this.props.valuesSelected[this.props.className], onChange: this.props.onChange },
+          optionsMap
+        )
+      );
+    }
+  }]);
+
+  return Select;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var RandomBtn = function (_React$Component6) {
+  _inherits(RandomBtn, _React$Component6);
+
+  function RandomBtn() {
+    _classCallCheck(this, RandomBtn);
+
+    return _possibleConstructorReturn(this, (RandomBtn.__proto__ || Object.getPrototypeOf(RandomBtn)).apply(this, arguments));
+  }
+
+  _createClass(RandomBtn, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        { className: 'col-2' },
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'span',
+          null,
+          '\xA0'
+        ),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+          'button',
+          { type: 'button', name: this.props.className, className: this.props.className, onClick: this.props.onClick },
+          'LOSUJ'
+        )
+      );
+    }
+  }]);
+
+  return RandomBtn;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+var FakeQuotesCreator = function (_React$Component7) {
+  _inherits(FakeQuotesCreator, _React$Component7);
+
+  function FakeQuotesCreator(props) {
+    _classCallCheck(this, FakeQuotesCreator);
+
+    var _this8 = _possibleConstructorReturn(this, (FakeQuotesCreator.__proto__ || Object.getPrototypeOf(FakeQuotesCreator)).call(this, props));
+
+    _this8.mapValues = function (filterBy) {
+      // Set valuesArray and reset valuesSelected and valuesDisplay
+      var valuesDB = _this8.state.valuesDB;
+      var newState = {
+        valuesArray: {
+          categories: _this8.valuesToArray(valuesDB, 'c', 'Wybierz kategorię...'),
+          quotes: _this8.valuesToArray(valuesDB, 'q', 'Wybierz cytat...', filterBy),
+          authors: _this8.valuesToArray(valuesDB, 'a', 'Wybierz autora...'),
+          themes: _this8.state.themesDB
+        },
+        valuesSelected: {
+          categories: 0,
+          quotes: 0,
+          authors: 0,
+          themes: 0
+        },
+        valuesDisplay: {
+          quotes: "Wybierz cytat",
+          authors: "Wybierz autora",
+          themes: {
+            name: "Wybierz szablon...",
+            color: "#242424",
+            backgroundColor: "#FFFFFF"
+          }
+        }
+      };
+
+      return newState;
+    };
+
+    _this8.valuesToArray = function (database, element, text, filterBy) {
+      var categoriesDB = _this8.state.categoriesDB;
+
+      // Prepare raw array (filter by category if selected)
+      var array = database.map(function (e, i) {
+        if (filterBy && filterBy != 0) {
+          if (categoriesDB[filterBy] === e.c) {
+            return e[element].trim();
+          }
+        } else {
+          return e[element].trim();
+        }
+      });
+
+      // Sort array, remove duplicates, undefined values and add initial selected option
+      array = array.sort().filter(function (x, i, a) {
+        return !i || x != a[i - 1];
+      });
+      array = array.filter(function (n) {
+        return n;
+      });
+      if (text) {
+        array.unshift(text);
+      }
+      return array;
+    };
+
+    _this8.handleSelectChange = function (event) {
+      var value = event.target.value;
+      var className = event.target.className;
+      var classNamesArray = ['categories', 'quotes', 'authors', 'themes'];
+      var newState = {
+        valuesArray: _this8.state.valuesArray,
+        valuesSelected: {},
+        valuesDisplay: {}
+      };
+
+      // Filter quotes by category (if it was changed => update mapValues)
+      if (className === "categories" && value !== 0) {
+        newState = _this8.mapValues(value);
+      }
+
+      // Set values to select and display
+      for (var i = 0; i < classNamesArray.length; i++) {
+        if (classNamesArray[i] === className) {
+          newState["valuesSelected"][classNamesArray[i]] = value;
+          newState["valuesDisplay"][classNamesArray[i]] = _this8.state.valuesArray[className][value];
+        } else {
+          newState["valuesSelected"][classNamesArray[i]] = _this8.state.valuesSelected[classNamesArray[i]];
+          newState["valuesDisplay"][classNamesArray[i]] = _this8.state.valuesDisplay[classNamesArray[i]];
+        }
+      }
+
+      // If category was changed => reset selected quote
+      if (className === "categories") {
+        newState["valuesSelected"]["quotes"] = 0;
+      }
+
+      _this8.setState(newState);
+    };
+
+    _this8.handleRandomClick = function (event) {
+      var classNamesArray = ['quotes', 'authors', 'themes'];
+
+      // Reset valuesArray, selection and display board
+      var newState = _this8.mapValues();
+
+      // Random values generator + set values to select and display
+      for (var i = 0; i < classNamesArray.length; i++) {
+        var tempValuesArray = newState['valuesArray'][classNamesArray[i]];
+        var random = Math.floor(Math.random() * (tempValuesArray.length - 1) + 1);
+        newState["valuesSelected"][classNamesArray[i]] = random;
+        newState["valuesDisplay"][classNamesArray[i]] = tempValuesArray[random];
+      }
+      _this8.setState(newState);
+    };
+
+    _this8.handleSubmit = function (event) {
+      event.preventDefault();
+    };
+
+    _this8.state = {
+      valuesDB: __WEBPACK_IMPORTED_MODULE_2__modules_quotesDB_js__["a" /* quotesDB */],
+      themesDB: __WEBPACK_IMPORTED_MODULE_3__modules_themesDB_js__["a" /* themesDB */],
+      categoriesDB: "",
+      valuesArray: {},
+      valuesSelected: {},
+      valuesDisplay: {}
+    };
+    return _this8;
+  }
+
+  _createClass(FakeQuotesCreator, [{
+    key: 'render',
+    value: function render() {
+      return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
+        'div',
+        null,
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Header, null),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Form, { className: 'col-12 row inner', valuesArray: this.state.valuesArray, themesArray: this.state.themesArray, valuesSelected: this.state.valuesSelected, onSubmit: this.state.handleSubmit, onChange: this.handleSelectChange, onClick: this.handleRandomClick }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Board, { valuesDisplay: this.state.valuesDisplay }),
+        __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(Footer, null)
+      );
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      var valuesDB = this.state.valuesDB;
+      var newState = {
+        categoriesDB: {},
+        valuesArray: {}
+      };
+
+      // Set valuesArray
+      newState = this.mapValues();
+
+      // Set categoriesDB
+      newState.categoriesDB = this.valuesToArray(valuesDB, 'c', 'Wybierz kategorię...');
+
+      this.setState(newState);
+    }
+  }]);
+
+  return FakeQuotesCreator;
+}(__WEBPACK_IMPORTED_MODULE_0_react___default.a.Component);
+
+document.addEventListener('DOMContentLoaded', function () {
+  __WEBPACK_IMPORTED_MODULE_1_react_dom___default.a.render(__WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(FakeQuotesCreator, null), document.getElementById('app'));
+});
 
 /***/ }),
 /* 84 */
@@ -10240,12 +10550,10 @@ module.exports = __webpack_require__(16);
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -10436,12 +10744,10 @@ module.exports = ReactChildren;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -10554,12 +10860,10 @@ module.exports = PooledClass;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -10736,12 +11040,10 @@ module.exports = traverseAllChildren;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -10800,12 +11102,10 @@ module.exports = KeyEscapeUtils;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -10975,12 +11275,10 @@ module.exports = ReactDOMFactories;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -11068,12 +11366,10 @@ module.exports = checkReactTypeSpec;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -11099,12 +11395,10 @@ module.exports = ReactPropTypeLocationNames;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -11121,12 +11415,10 @@ module.exports = ReactPropTypesSecret;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -11145,12 +11437,10 @@ module.exports = factory(isValidElement);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 
@@ -11158,6 +11448,7 @@ module.exports = factory(isValidElement);
 var emptyFunction = __webpack_require__(9);
 var invariant = __webpack_require__(1);
 var warning = __webpack_require__(2);
+var assign = __webpack_require__(4);
 
 var ReactPropTypesSecret = __webpack_require__(55);
 var checkPropTypes = __webpack_require__(95);
@@ -11256,7 +11547,8 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
     objectOf: createObjectOfTypeChecker,
     oneOf: createEnumTypeChecker,
     oneOfType: createUnionTypeChecker,
-    shape: createShapeTypeChecker
+    shape: createShapeTypeChecker,
+    exact: createStrictShapeTypeChecker,
   };
 
   /**
@@ -11471,7 +11763,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       if (typeof checker !== 'function') {
         warning(
           false,
-          'Invalid argument supplid to oneOfType. Expected an array of check functions, but ' +
+          'Invalid argument supplied to oneOfType. Expected an array of check functions, but ' +
           'received %s at index %s.',
           getPostfixForTypeWarning(checker),
           i
@@ -11522,6 +11814,36 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
       }
       return null;
     }
+    return createChainableTypeChecker(validate);
+  }
+
+  function createStrictShapeTypeChecker(shapeTypes) {
+    function validate(props, propName, componentName, location, propFullName) {
+      var propValue = props[propName];
+      var propType = getPropType(propValue);
+      if (propType !== 'object') {
+        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
+      }
+      // We need to check all keys in case some are required but missing from
+      // props.
+      var allKeys = assign({}, props[propName], shapeTypes);
+      for (var key in allKeys) {
+        var checker = shapeTypes[key];
+        if (!checker) {
+          return new PropTypeError(
+            'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
+            '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
+            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+          );
+        }
+        var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret);
+        if (error) {
+          return error;
+        }
+      }
+      return null;
+    }
+
     return createChainableTypeChecker(validate);
   }
 
@@ -11665,12 +11987,10 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  */
 
 
@@ -11704,7 +12024,7 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
         try {
           // This is intentionally an invariant that gets caught. It's the same
           // behavior as without this statement except with a better message.
-          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'React.PropTypes.', componentName || 'React class', location, typeSpecName);
+          invariant(typeof typeSpecs[typeSpecName] === 'function', '%s: %s type `%s` is invalid; it must be a function, usually from ' + 'the `prop-types` package, but received `%s`.', componentName || 'React class', location, typeSpecName, typeof typeSpecs[typeSpecName]);
           error = typeSpecs[typeSpecName](values, typeSpecName, componentName, location, null, ReactPropTypesSecret);
         } catch (ex) {
           error = ex;
@@ -11734,18 +12054,16 @@ module.exports = checkPropTypes;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
 
 
-module.exports = '15.6.1';
+module.exports = '15.6.2';
 
 /***/ }),
 /* 97 */
@@ -11753,12 +12071,10 @@ module.exports = '15.6.1';
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -11781,12 +12097,10 @@ module.exports = factory(Component, isValidElement, ReactNoopUpdateQueue);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -12661,12 +12975,10 @@ module.exports = factory;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -12715,12 +13027,10 @@ module.exports = __webpack_require__(101);
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -12832,12 +13142,10 @@ module.exports = ReactDOM;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -12923,12 +13231,10 @@ module.exports = {
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -13002,12 +13308,10 @@ module.exports = ARIADOMPropertyConfig;
 
 "use strict";
 /**
- * Copyright 2013-present Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -13391,12 +13695,10 @@ module.exports = BeforeInputEventPlugin;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -13491,12 +13793,10 @@ module.exports = FallbackCompositionState;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -13532,12 +13832,10 @@ module.exports = SyntheticCompositionEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -13574,12 +13872,10 @@ module.exports = SyntheticInputEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -13704,7 +14000,7 @@ if (ExecutionEnvironment.canUseDOM) {
   // IE9 claims to support the input event but fails to trigger it when
   // deleting text, so we ignore its input events.
 
-  isInputEventSupported = isEventSupported('input') && (!('documentMode' in document) || document.documentMode > 9);
+  isInputEventSupported = isEventSupported('input') && (!document.documentMode || document.documentMode > 9);
 }
 
 /**
@@ -13891,12 +14187,10 @@ module.exports = ChangeEventPlugin;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -13985,12 +14279,10 @@ module.exports = ReactRef;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -14084,12 +14376,10 @@ module.exports = ReactOwner;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2016-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -14451,12 +14741,10 @@ module.exports = ReactDebugTool;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2016-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -14494,12 +14782,10 @@ module.exports = ReactInvalidSetStateWarningHook;
 
 "use strict";
 /**
- * Copyright 2016-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2016-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -14536,11 +14822,9 @@ module.exports = ReactHostOperationHistoryHook;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -14573,11 +14857,9 @@ module.exports = performanceNow;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -14600,12 +14882,10 @@ module.exports = performance || {};
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -14631,12 +14911,10 @@ module.exports = DefaultEventPluginOrder;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -14734,12 +15012,10 @@ module.exports = EnterLeaveEventPlugin;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -14788,6 +15064,7 @@ var HTMLDOMPropertyConfig = {
     contentEditable: 0,
     contextMenu: 0,
     controls: HAS_BOOLEAN_VALUE,
+    controlsList: 0,
     coords: 0,
     crossOrigin: 0,
     data: 0, // For `<object />` acts as `src`.
@@ -14975,12 +15252,10 @@ module.exports = HTMLDOMPropertyConfig;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -15008,12 +15283,10 @@ module.exports = ReactComponentBrowserEnvironment;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -15063,11 +15336,9 @@ module.exports = Danger;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -15153,11 +15424,9 @@ module.exports = createNodesFromMarkup;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -15286,11 +15555,9 @@ module.exports = createArrayFromMixed;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -15384,12 +15651,10 @@ module.exports = getMarkupWrap;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -15422,12 +15687,10 @@ module.exports = ReactDOMIDOperations;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -16188,6 +16451,10 @@ ReactDOMComponent.Mixin = {
         // happen after `_updateDOMProperties`. Otherwise HTML5 input validations
         // raise warnings and prevent the new value from being assigned.
         ReactDOMInput.updateWrapper(this);
+
+        // We also check that we haven't missed a value update, such as a
+        // Radio group shifting the checked value to another named radio input.
+        inputValueTracking.updateValueIfChanged(this);
         break;
       case 'textarea':
         ReactDOMTextarea.updateWrapper(this);
@@ -16438,12 +16705,10 @@ module.exports = ReactDOMComponent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -16467,12 +16732,10 @@ module.exports = AutoFocusUtils;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -16689,11 +16952,9 @@ module.exports = CSSPropertyOperations;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -16736,11 +16997,9 @@ module.exports = camelizeStyleName;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -16770,12 +17029,10 @@ module.exports = camelize;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -16856,11 +17113,9 @@ module.exports = dangerousStyleValue;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -16902,11 +17157,9 @@ module.exports = hyphenateStyleName;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -16938,11 +17191,9 @@ module.exports = hyphenate;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  * @typechecks static-only
@@ -16972,12 +17223,10 @@ module.exports = memoizeStringOnly;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -17003,12 +17252,10 @@ module.exports = quoteAttributeValueForBrowser;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -17040,12 +17287,10 @@ module.exports = ReactEventEmitterMixin;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -17146,12 +17391,10 @@ module.exports = getVendorPrefixedEventName;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -17439,12 +17682,10 @@ module.exports = ReactDOMInput;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -17567,12 +17808,10 @@ module.exports = ReactDOMOption;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -17733,12 +17972,10 @@ module.exports = ReactDOMTextarea;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -18185,12 +18422,10 @@ module.exports = ReactMultiChild;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -18344,12 +18579,10 @@ module.exports = ReactChildReconciler;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -18618,7 +18851,7 @@ var ReactCompositeComponent = {
   },
 
   _constructComponent: function (doConstruct, publicProps, publicContext, updateQueue) {
-    if (process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production' && !doConstruct) {
       ReactCurrentOwner.current = this;
       try {
         return this._constructComponentWithoutOwner(doConstruct, publicProps, publicContext, updateQueue);
@@ -19250,12 +19483,10 @@ module.exports = ReactCompositeComponent;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -19343,12 +19574,10 @@ module.exports = checkReactTypeSpec;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -19374,12 +19603,10 @@ module.exports = ReactPropTypeLocationNames;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -19400,12 +19627,10 @@ module.exports = getNextDebugID;
 
 "use strict";
 /**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -19425,12 +19650,10 @@ module.exports = REACT_ELEMENT_TYPE;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -19471,12 +19694,10 @@ module.exports = getIteratorFn;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -19553,12 +19774,10 @@ module.exports = flattenChildren;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -19649,12 +19868,10 @@ module.exports = ReactServerRenderingTransaction;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2015-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -19794,12 +20011,10 @@ module.exports = ReactServerUpdateQueue;
 
 "use strict";
 /**
- * Copyright 2014-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2014-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -19859,12 +20074,10 @@ module.exports = ReactDOMEmptyComponent;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2015-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2015-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20001,12 +20214,10 @@ module.exports = {
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20169,12 +20380,10 @@ module.exports = ReactDOMTextComponent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20242,12 +20451,10 @@ module.exports = ReactDefaultBatchingStrategy;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20403,11 +20610,9 @@ module.exports = ReactEventListener;
 "use strict";
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -20446,12 +20651,10 @@ module.exports = getUnboundedScrollPosition;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20485,12 +20688,10 @@ module.exports = ReactInjection;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20669,12 +20870,10 @@ module.exports = ReactReconcileTransaction;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20886,12 +21085,10 @@ module.exports = ReactDOMSelection;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -20968,11 +21165,9 @@ module.exports = getNodeForCharacterOffset;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -21013,11 +21208,9 @@ module.exports = containsNode;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -21043,11 +21236,9 @@ module.exports = isTextNode;
 
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
- * All rights reserved.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * @typechecks
  */
@@ -21070,12 +21261,10 @@ module.exports = isNode;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -21377,12 +21566,10 @@ module.exports = SVGDOMPropertyConfig;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -21570,12 +21757,10 @@ module.exports = SelectEventPlugin;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -21802,12 +21987,10 @@ module.exports = SimpleEventPlugin;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -21846,12 +22029,10 @@ module.exports = SyntheticAnimationEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -21889,12 +22070,10 @@ module.exports = SyntheticClipboardEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -21930,12 +22109,10 @@ module.exports = SyntheticFocusEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22019,12 +22196,10 @@ module.exports = SyntheticKeyboardEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22136,12 +22311,10 @@ module.exports = getEventKey;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22177,12 +22350,10 @@ module.exports = SyntheticDragEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22227,12 +22398,10 @@ module.exports = SyntheticTouchEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22271,12 +22440,10 @@ module.exports = SyntheticTransitionEvent;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22327,12 +22494,10 @@ module.exports = SyntheticWheelEvent;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22366,12 +22531,10 @@ module.exports = ReactDOMContainerInfo;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22390,12 +22553,10 @@ module.exports = ReactDOMFeatureFlags;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22445,12 +22606,10 @@ module.exports = ReactMarkupChecksum;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  * 
  */
@@ -22494,18 +22653,16 @@ module.exports = adler32;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
 
 
-module.exports = '15.6.1';
+module.exports = '15.6.2';
 
 /***/ }),
 /* 181 */
@@ -22513,12 +22670,10 @@ module.exports = '15.6.1';
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22579,12 +22734,10 @@ module.exports = findDOMNode;
 
 "use strict";
 /**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22600,12 +22753,10 @@ module.exports = ReactMount.renderSubtreeIntoContainer;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22718,12 +22869,10 @@ module.exports = ReactDOMUnknownPropertyHook;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22767,12 +22916,10 @@ module.exports = ReactDOMNullInputValuePropHook;
 
 "use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
- * Copyright 2013-present, Facebook, Inc.
- * All rights reserved.
+ * Copyright (c) 2013-present, Facebook, Inc.
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
  *
  */
 
@@ -22865,32 +23012,308 @@ module.exports = ReactDOMInvalidARIAHook;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return topics; });
-var topics=["Wybierz kategori\u0119...","M\u0105dro\u015B\u0107 i g\u0142upota","Mi\u0142o\u015B\u0107","Pieni\u0105dze i bogactwo","Szcz\u0119\u015Bcie","W\u0142adza","Wolno\u015B\u0107 i niewola"];
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return quotesDB; });
+var quotesDB = [{
+  c: "Miłość",
+  q: "Ani czas, ani mądrość nie zmieniają człowieka – bo odmienić istotę ludzką zdolna jest wyłącznie miłość.",
+  a: "Paulo Coelho"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Biedny jest człowiek, który pożąda wielu rzeczy.",
+  a: "Leonardo da Vinci"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Bogactwo jest jak woda morska: im więcej pijesz, tym większe masz pragnienie.",
+  a: "Arthur Schopenhauer"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Bogactwo to małe piwo, a władza to szampan.",
+  a: "Stephen King"
+}, {
+  c: "Wolność i niewola",
+  q: "Być wolnym to móc nie kłamać.",
+  a: "Albert Camus"
+}, {
+  c: "Władza",
+  q: "Być wpływowym to jak być damą - jeśli musisz mówić ludziom, że nią jesteś, to znaczy, że nią nie jesteś.",
+  a: "Margaret Thatcher"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Celem naszego życia nie powinno być posiadanie bogactw, lecz bogactwo bycia.",
+  a: "Erich Fromm"
+}, {
+  c: "Mądrość i głupota",
+  q: "Cokolwiek czynisz, czyń rozważnie i patrz końca.",
+  a: "Owidiusz"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Człowiek nie jest bogaty tym, co posiada, lecz tym, bez czego z godnością może się obejść.",
+  a: "Immanuel Kant"
+}, {
+  c: "Władza",
+  q: "Człowiekowi jest dana władza tylko nad samym sobą.",
+  a: "Lew Tołstoj"
+}, {
+  c: "Władza",
+  q: "Dowcip to niebezpieczna forma opozycji.",
+  a: "Ryszard Kapuściński"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Firma, która zajmuje się wyłącznie zarabianiem pieniędzy to kiepska firma.",
+  a: "Henry Ford"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Gdy bieda wciąż trwa, nie ma prawdziwej wolności.",
+  a: "Nelson Mandela"
+}, {
+  c: "Szczęście",
+  q: "Gdy człowiek jest szczęśliwy, żyje w harmonii z samym sobą i swoim otoczeniem.",
+  a: "Oscar Wilde"
+}, {
+  c: "Szczęście",
+  q: "Gdy człowiek jest zbyt szczęśliwy, wciąż drży z niepokoju.",
+  a: "Emil Zola"
+}, {
+  c: "Mądrość i głupota",
+  q: "Gdy rozum śpi, budzą się potwory.",
+  a: "Francisco Goya"
+}, {
+  c: "Mądrość i głupota",
+  q: "Gdyby ludzie rozmawiali tylko o tym, co rozumieją, zapadłaby nad światem wielka cisza.",
+  a: "Albert Einstein"
+}, {
+  c: "Miłość",
+  q: "Ile głów - tyle rozumów. Ile serc - tyle rodzajów miłości.",
+  a: "Lew Tołstoj"
+}, {
+  c: "Wolność i niewola",
+  q: "Im mniej polityki, tym więcej wolności.",
+  a: "Hannah Arendt"
+}, {
+  c: "Władza",
+  q: "Jest bardzo niebezpiecznie mieć rację w sprawach, w których możni tego świata nie mieli racji.",
+  a: "Wolter"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Jeśli człowiek ma dość pieniędzy, trudno mu w ogóle popełnić jakieś przestępstwo. Zdarzają mu się tylko zabawne, drobne niezręczności.",
+  a: "Terry Pratchett"
+}, {
+  c: "Mądrość i głupota",
+  q: "Jeśli nigdy nie grzeszysz przeciwko rozsądkowi, nigdy do niczego nie dojdziesz.",
+  a: "Albert Einstein"
+}, {
+  c: "Wolność i niewola",
+  q: "Jeśli wolność słowa w ogóle coś oznacza, to oznacza prawo do mówienia ludziom tego, czego nie chcą słyszeć.",
+  a: "George Orwell"
+}, {
+  c: "Miłość",
+  q: "Jeżeli naprawdę kocham jakąś osobę, kocham wszystkich, kocham świat, kocham życie.",
+  a: "Erich Fromm"
+}, {
+  c: "Mądrość i głupota",
+  q: "Kiedy pali się za sobą mosty, najważniejsze jest, by nie stać na nich, rzucając zapałkę.",
+  a: "Terry Pratchett"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Kobietom pieniądze potrzebne nie są. Bo i po co? Nie piją, w kości nie grają, a kobietami, psiakrew, są przecież same.",
+  a: "Andrzej Sapkowski"
+}, {
+  c: "Miłość",
+  q: "Kochać drugiego człowieka oznacza wielką pracę nad sobą.",
+  a: "Jan Twardowski"
+}, {
+  c: "Miłość",
+  q: "Kochaj bliźniego, jak siebie samego.",
+  a: "Anonim"
+}, {
+  c: "Szczęście",
+  q: "Kogo szczęście wyniesie, niech się upaść boi.",
+  a: "Mikołaj Rej"
+}, {
+  c: "Wolność i niewola",
+  q: "Krańcowa wolność prowadzi narody i jednostki do skrajnego niewolnictwa.",
+  a: "Cyceron"
+}, {
+  c: "Władza",
+  q: "Kto chce rządzić ludźmi, nie powinien ich gnać przed sobą, lecz sprawić, by podążali za nim.",
+  a: "Monteskiusz"
+}, {
+  c: "Władza",
+  q: "Kto kontroluje przeszłość, ten ma władzę nad przyszłością.",
+  a: "George Orwell"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Kto nie umie w potrzebie rozstać się ze skarbem, jest jak niewolnik w pętach.",
+  a: "J.R.R. Tolkien"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Lepiej mieć stały dochód niż fascynującą osobowość.",
+  a: "Oscar Wilde"
+}, {
+  c: "Szczęście",
+  q: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  a: "Cyceron"
+}, {
+  c: "Miłość",
+  q: "Miłość jest największą słodyczą i największą goryczą na Ziemi.",
+  a: "Eurypides"
+}, {
+  c: "Miłość",
+  q: "Miłość ludzi nie poddaje się władzy bagnetów.",
+  a: "Napoleon Bonaparte"
+}, {
+  c: "Miłość",
+  q: "Miłość nie jest skarbem, który się posiadło, lecz obustronnym zobowiązaniem.",
+  a: "Antoine de Saint-Exupéry"
+}, {
+  c: "Miłość",
+  q: "Miłość umie wykonać wszystko, na co się odważy.",
+  a: "William Szekspir"
+}, {
+  c: "Miłość",
+  q: "Można nie kochać Cię i żyć, ale nie można owocować.",
+  a: "Wisława Szymborska"
+}, {
+  c: "Mądrość i głupota",
+  q: "Nie wiedziałem, że na świecie jest tylu idiotów, dopóki nie poznałem internetu.",
+  a: "Stanisław Lem"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Nie zależy mi na tym, by zostać najbogatszym człowiekiem na cmentarzu.",
+  a: "Steve Jobs"
+}, {
+  c: "Władza",
+  q: "Nie znam większego grzechu niż uciskanie słabszych w imieniu Boga.",
+  a: "Mahatma Gandhi"
+}, {
+  c: "Mądrość i głupota",
+  q: "Niebo gwiaździste nade mną, prawo moralne we mnie.",
+  a: "Immanuel Kant"
+}, {
+  c: "Władza",
+  q: "Nieważne, kto głosuje, ważne, kto liczy głosy.",
+  a: "Józef Stalin"
+}, {
+  c: "Mądrość i głupota",
+  q: "Nigdy nie umierałbym za swoje przekonania, bo mogę się mylić.",
+  a: "Bertrand Russell"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Nikt nie jest patriotą, gdy chodzi o podatki.",
+  a: "George Orwell"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Pieniądz przekształca wierność w niewierność, miłość w nienawiść, cnotę w występek, występek w cnotę, sługę w pana, głupotę w rozsądek, rozsądek w głupotę.",
+  a: "Karol Marks"
+}, {
+  c: "Szczęście",
+  q: "Sprawy ludzkie toczą się kołem, które w swoim obrocie nie dopuszcza, żeby zawsze ci sami byli szczęśliwi.",
+  a: "Ryszard Kapuściński"
+}, {
+  c: "Miłość",
+  q: "Stara miłość nie rdzewieje.",
+  a: "Horacy"
+}, {
+  c: "Szczęście",
+  q: "Szczęście nie polega na szczęściu, lecz na jego osiąganiu.",
+  a: "Fiodor Dostojewski"
+}, {
+  c: "Wolność i niewola",
+  q: "Tam, gdzie nie ma wolności, nie ma ani praw, ani obowiązków.",
+  a: "Napoleon Bonaparte"
+}, {
+  c: "Mądrość i głupota",
+  q: "Tylko dwie rzeczy są nieskończone: wszechświat i ludzka głupota. Co do tej pierwszej są jednak pewne wątpliwości.",
+  a: "Albert Einstein"
+}, {
+  c: "Władza",
+  q: "W demokracji wolno głupcom głosować, w dyktaturze wolno głupcom rządzić.",
+  a: "Bertrand Russell"
+}, {
+  c: "Mądrość i głupota",
+  q: "Wątpliwość nie jest przyjemnym stanem umysłu, lecz pewność jest śmiesznym.",
+  a: "Wolter"
+}, {
+  c: "Mądrość i głupota",
+  q: "Wiele rzeczy zaczynamy rozumieć późno, jeszcze więcej – bardzo późno, najwięcej – zbyt późno.",
+  a: "Ryszard Kapuściński"
+}, {
+  c: "Pieniądze i bogactwo",
+  q: "Włóczęga: człowiek, który nazwałby się turystą, gdyby miał pieniądze.",
+  a: "Julian Tuwim"
+}, {
+  c: "Władza",
+  q: "Wobec despoty wszyscy są równi, mianowicie - równi zeru.",
+  a: "Fryderyk Engels"
+}, {
+  c: "Władza",
+  q: "Wojna nie jest niczym innym, jak sporem między rządami o władzę nad poddanymi.",
+  a: "Lew Tołstoj"
+}, {
+  c: "Wolność i niewola",
+  q: "Wolność jest to prawo czynienia wszystkiego, co nie szkodzi innym.",
+  a: "Karol Marks"
+}, {
+  c: "Wolność i niewola",
+  q: "Wolność oznacza prawo do twierdzenia, że dwa i dwa to cztery. Z niego wynika reszta.",
+  a: "George Orwell"
+}, {
+  c: "Wolność i niewola",
+  q: "Wolność to dobro, które umożliwia korzystanie z innych dóbr.",
+  a: "Monteskiusz"
+}, {
+  c: "Wolność i niewola",
+  q: "Wolność to prawo czynienia wszystkiego, co nie jest zabronione.",
+  a: "Monteskiusz"
+}, {
+  c: "Wolność i niewola",
+  q: "Wolny bowiem jest człowiek tylko wtedy, gdy jest samotny.",
+  a: "Arthur Schopenhauer"
+}, {
+  c: "Władza",
+  q: "Z punktu widzenia polityki prawda ma charakter despotyczny. Jest zatem znienawidzona przez despotów, słusznie obawiających się konkurencji ze strony siły przymusu, której nie mogą sobie podporządkować.",
+  a: "Hannah Arendt"
+}, {
+  c: "Władza",
+  q: "Zwycięski rewolucjonista zostaje mężem stanu, pokonany jest tylko zbrodniarzem.",
+  a: "Erich Fromm"
+}];
 
 /***/ }),
 /* 187 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return quotes; });
-var quotes=[{t:"Wybierz kategori\u0119..",q:"Wybierz cytat..",a:"Wybierz autora.."},{t:"Mi\u0142o\u015B\u0107",q:"Ani czas, ani m\u0105dro\u015B\u0107 nie zmieniaj\u0105 cz\u0142owieka \u2013 bo odmieni\u0107 istot\u0119 ludzk\u0105 zdolna jest wy\u0142\u0105cznie mi\u0142o\u015B\u0107.",a:"Paulo Coelho"},{t:"Pieni\u0105dze i bogactwo",q:"Biedny jest cz\u0142owiek, kt\xF3ry po\u017C\u0105da wielu rzeczy.",a:"Leonardo da Vinci"},{t:"Pieni\u0105dze i bogactwo",q:"Bogactwo jest jak woda morska: im wi\u0119cej pijesz, tym wi\u0119ksze masz pragnienie.",a:"Arthur Schopenhauer"},{t:"Pieni\u0105dze i bogactwo",q:"Bogactwo to ma\u0142e piwo, a w\u0142adza to szampan.",a:"Stephen King"},{t:"Wolno\u015B\u0107 i niewola",q:"By\u0107 wolnym to m\xF3c nie k\u0142ama\u0107.",a:"Albert Camus"},{t:"W\u0142adza",q:"By\u0107 wp\u0142ywowym to jak by\u0107 dam\u0105 - je\u015Bli musisz m\xF3wi\u0107 ludziom, \u017Ce ni\u0105 jeste\u015B, to znaczy, \u017Ce ni\u0105 nie jeste\u015B.",a:"Margaret Thatcher"},{t:"Pieni\u0105dze i bogactwo",q:"Celem naszego \u017Cycia nie powinno by\u0107 posiadanie bogactw, lecz bogactwo bycia.",a:"Erich Fromm"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Cokolwiek czynisz, czy\u0144 rozwa\u017Cnie i patrz ko\u0144ca.",a:"Owidiusz"},{t:"Pieni\u0105dze i bogactwo",q:"Cz\u0142owiek nie jest bogaty tym, co posiada, lecz tym, bez czego z godno\u015Bci\u0105 mo\u017Ce si\u0119 obej\u015B\u0107.",a:"Immanuel Kant"},{t:"W\u0142adza",q:"Cz\u0142owiekowi jest dana w\u0142adza tylko nad samym sob\u0105.",a:"Lew To\u0142stoj"},{t:"W\u0142adza",q:"Dowcip to niebezpieczna forma opozycji.",a:"Ryszard Kapu\u015Bci\u0144ski"},{t:"Pieni\u0105dze i bogactwo",q:"Firma, kt\xF3ra zajmuje si\u0119 wy\u0142\u0105cznie zarabianiem pieni\u0119dzy to kiepska firma.",a:"Henry Ford"},{t:"Pieni\u0105dze i bogactwo",q:"Gdy bieda wci\u0105\u017C trwa, nie ma prawdziwej wolno\u015Bci.",a:"Nelson Mandela"},{t:"Szcz\u0119\u015Bcie",q:"Gdy cz\u0142owiek jest szcz\u0119\u015Bliwy, \u017Cyje w harmonii z samym sob\u0105 i swoim otoczeniem.",a:"Oscar Wild"},{t:"Szcz\u0119\u015Bcie",q:"Gdy cz\u0142owiek jest zbyt szcz\u0119\u015Bliwy, wci\u0105\u017C dr\u017Cy z niepokoju.",a:"Emil Zola"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Gdy rozum \u015Bpi, budz\u0105 si\u0119 potwory.",a:"Francisco Goya"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Gdyby ludzie rozmawiali tylko o tym, co rozumiej\u0105, zapad\u0142aby nad \u015Bwiatem wielka cisza.",a:"Albert Einstein"},{t:"Mi\u0142o\u015B\u0107",q:"Ile g\u0142\xF3w - tyle rozum\xF3w. Ile serc - tyle rodzaj\xF3w mi\u0142o\u015Bci.",a:"Lew To\u0142stoj"},{t:"Wolno\u015B\u0107 i niewola",q:"Im mniej polityki, tym wi\u0119cej wolno\u015Bci.",a:"Hannah Arendt"},{t:"W\u0142adza",q:"Jest bardzo niebezpiecznie mie\u0107 racj\u0119 w sprawach, w kt\xF3rych mo\u017Cni tego \u015Bwiata nie mieli racji.",a:"Wolter"},{t:"Pieni\u0105dze i bogactwo",q:"Je\u015Bli cz\u0142owiek ma do\u015B\u0107 pieni\u0119dzy, trudno mu w og\xF3le pope\u0142ni\u0107 jakie\u015B przest\u0119pstwo. Zdarzaj\u0105 mu si\u0119 tylko zabawne, drobne niezr\u0119czno\u015Bci.",a:"Terry Pratchett"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Je\u015Bli nigdy nie grzeszysz przeciwko rozs\u0105dkowi, nigdy do niczego nie dojdziesz.",a:"Albert Einstein"},{t:"Wolno\u015B\u0107 i niewola",q:"Je\u015Bli wolno\u015B\u0107 s\u0142owa w og\xF3le co\u015B oznacza, to oznacza prawo do m\xF3wienia ludziom tego, czego nie chc\u0105 s\u0142ysze\u0107.",a:"George Orwell"},{t:"Mi\u0142o\u015B\u0107",q:"Je\u017Celi naprawd\u0119 kocham jak\u0105\u015B osob\u0119, kocham wszystkich, kocham \u015Bwiat, kocham \u017Cycie.",a:"Erich Fromm"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Kiedy pali si\u0119 za sob\u0105 mosty, najwa\u017Cniejsze jest, by nie sta\u0107 na nich, rzucaj\u0105c zapa\u0142k\u0119.",a:"Terry Pratchett"},{t:"Pieni\u0105dze i bogactwo",q:"Kobietom pieni\u0105dze potrzebne nie s\u0105. Bo i po co? Nie pij\u0105, w ko\u015Bci nie graj\u0105, a kobietami, psiakrew, s\u0105 przecie\u017C same.",a:"Andrzej Sapkowski"},{t:"Mi\u0142o\u015B\u0107",q:"Kocha\u0107 drugiego cz\u0142owieka oznacza wielk\u0105 prac\u0119 nad sob\u0105.",a:"Jan Twardowski"},{t:"Mi\u0142o\u015B\u0107",q:"Kochaj bli\u017Aniego, jak siebie samego.",a:"Anonim"},{t:"Szcz\u0119\u015Bcie",q:"Kogo szcz\u0119\u015Bcie wyniesie, niech si\u0119 upa\u015B\u0107 boi.",a:"Miko\u0142aj Rej"},{t:"Wolno\u015B\u0107 i niewola",q:"Kra\u0144cowa wolno\u015B\u0107 prowadzi narody i jednostki do skrajnego niewolnictwa.",a:"Cyceron"},{t:"W\u0142adza",q:"Kto chce rz\u0105dzi\u0107 lud\u017Ami, nie powinien ich gna\u0107 przed sob\u0105, lecz sprawi\u0107, by pod\u0105\u017Cali za nim.",a:"Monteskiusz"},{t:"W\u0142adza",q:"Kto kontroluje przesz\u0142o\u015B\u0107, ten ma w\u0142adz\u0119 nad przysz\u0142o\u015Bci\u0105.",a:"George Orwell"},{t:"Pieni\u0105dze i bogactwo",q:"Kto nie umie w potrzebie rozsta\u0107 si\u0119 ze skarbem, jest jak niewolnik w p\u0119tach.",a:"J.R.R. Tolkien"},{t:"Pieni\u0105dze i bogactwo",q:"Lepiej mie\u0107 sta\u0142y doch\xF3d ni\u017C fascynuj\u0105c\u0105 osobowo\u015B\u0107.",a:"Oscar Wilde"},{t:"Szcz\u0119\u015Bcie",q:"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",a:"Cyceron"},{t:"Mi\u0142o\u015B\u0107",q:"Mi\u0142o\u015B\u0107 jest najwi\u0119ksz\u0105 s\u0142odycz\u0105 i najwi\u0119ksz\u0105 gorycz\u0105 na Ziemi.",a:"Eurypides"},{t:"Mi\u0142o\u015B\u0107",q:"Mi\u0142o\u015B\u0107 ludzi nie poddaje si\u0119 w\u0142adzy bagnet\xF3w.",a:"Napoleon Bonaparte"},{t:"Mi\u0142o\u015B\u0107",q:"Mi\u0142o\u015B\u0107 nie jest skarbem, kt\xF3ry si\u0119 posiad\u0142o, lecz obustronnym zobowi\u0105zaniem.",a:"Antoine de Saint-Exup\xE9ry"},{t:"Mi\u0142o\u015B\u0107",q:"Mi\u0142o\u015B\u0107 umie wykona\u0107 wszystko, na co si\u0119 odwa\u017Cy.",a:"William Szekspir"},{t:"Mi\u0142o\u015B\u0107",q:"Mo\u017Cna nie kocha\u0107 Ci\u0119 i \u017Cy\u0107, ale nie mo\u017Cna owocowa\u0107.",a:"Wis\u0142awa Szymborska"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Nie wiedzia\u0142em, \u017Ce na \u015Bwiecie jest tylu idiot\xF3w, dop\xF3ki nie pozna\u0142em internetu.",a:"Stanis\u0142aw Lem"},{t:"Pieni\u0105dze i bogactwo",q:"Nie zale\u017Cy mi na tym, by zosta\u0107 najbogatszym cz\u0142owiekiem na cmentarzu.",a:"Steve Jobs"},{t:"W\u0142adza",q:"Nie znam wi\u0119kszego grzechu ni\u017C uciskanie s\u0142abszych w imieniu Boga.",a:"Mahatma Gandhi"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Niebo gwia\u017Adziste nade mn\u0105, prawo moralne we mnie.",a:"Immanuel Kant"},{t:"W\u0142adza",q:"Niewa\u017Cne, kto g\u0142osuje, wa\u017Cne, kto liczy g\u0142osy.",a:"J\xF3zef Stalin"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Nigdy nie umiera\u0142bym za swoje przekonania, bo mog\u0119 si\u0119 myli\u0107.",a:"Bertrand Russell"},{t:"Pieni\u0105dze i bogactwo",q:"Nikt nie jest patriot\u0105, gdy chodzi o podatki.",a:"George Orwell"},{t:"Pieni\u0105dze i bogactwo",q:"Pieni\u0105dz przekszta\u0142ca wierno\u015B\u0107 w niewierno\u015B\u0107, mi\u0142o\u015B\u0107 w nienawi\u015B\u0107, cnot\u0119 w wyst\u0119pek, wyst\u0119pek w cnot\u0119, s\u0142ug\u0119 w pana, g\u0142upot\u0119 w rozs\u0105dek, rozs\u0105dek w g\u0142upot\u0119.",a:"Karol Marks"},{t:"Szcz\u0119\u015Bcie",q:"Sprawy ludzkie tocz\u0105 si\u0119 ko\u0142em, kt\xF3re w swoim obrocie nie dopuszcza, \u017Ceby zawsze ci sami byli szcz\u0119\u015Bliwi.",a:"Ryszard Kapu\u015Bci\u0144ski"},{t:"Mi\u0142o\u015B\u0107",q:"Stara mi\u0142o\u015B\u0107 nie rdzewieje.",a:"Horacy"},{t:"Szcz\u0119\u015Bcie",q:"Szcz\u0119\u015Bcie nie polega na szcz\u0119\u015Bciu, lecz na jego osi\u0105ganiu.",a:"Fiodor Dostojewski"},{t:"Wolno\u015B\u0107 i niewola",q:"Tam, gdzie nie ma wolno\u015Bci, nie ma ani praw, ani obowi\u0105zk\xF3w.",a:"Napoleon Bonaparte"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Tylko dwie rzeczy s\u0105 niesko\u0144czone: wszech\u015Bwiat i ludzka g\u0142upota. Co do tej pierwszej s\u0105 jednak pewne w\u0105tpliwo\u015Bci.",a:"Albert Einstein"},{t:"W\u0142adza",q:"W demokracji wolno g\u0142upcom g\u0142osowa\u0107, w dyktaturze wolno g\u0142upcom rz\u0105dzi\u0107.",a:"Bertrand Russell"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"W\u0105tpliwo\u015B\u0107 nie jest przyjemnym stanem umys\u0142u, lecz pewno\u015B\u0107 jest \u015Bmiesznym.",a:"Wolter"},{t:"M\u0105dro\u015B\u0107 i g\u0142upota",q:"Wiele rzeczy zaczynamy rozumie\u0107 p\xF3\u017Ano, jeszcze wi\u0119cej \u2013 bardzo p\xF3\u017Ano, najwi\u0119cej \u2013 zbyt p\xF3\u017Ano.",a:"Ryszard Kapu\u015Bci\u0144ski"},{t:"Pieni\u0105dze i bogactwo",q:"W\u0142\xF3cz\u0119ga: cz\u0142owiek, kt\xF3ry nazwa\u0142by si\u0119 turyst\u0105, gdyby mia\u0142 pieni\u0105dze.",a:"Julian Tuwim"},{t:"W\u0142adza",q:"Wobec despoty wszyscy s\u0105 r\xF3wni, mianowicie - r\xF3wni zeru.",a:"Fryderyk Engels"},{t:"W\u0142adza",q:"Wojna nie jest niczym innym, jak sporem mi\u0119dzy rz\u0105dami o w\u0142adz\u0119 nad poddanymi.",a:"Lew To\u0142stoj"},{t:"Wolno\u015B\u0107 i niewola",q:"Wolno\u015B\u0107 jest to prawo czynienia wszystkiego, co nie szkodzi innym.",a:"Karol Marks"},{t:"Wolno\u015B\u0107 i niewola",q:"Wolno\u015B\u0107 oznacza prawo do twierdzenia, \u017Ce dwa i dwa to cztery. Z niego wynika reszta.",a:"George Orwell"},{t:"Wolno\u015B\u0107 i niewola",q:"Wolno\u015B\u0107 to dobro, kt\xF3re umo\u017Cliwia korzystanie z innych d\xF3br.",a:"Monteskiusz"},{t:"Wolno\u015B\u0107 i niewola",q:"Wolno\u015B\u0107 to prawo czynienia wszystkiego, co nie jest zabronione.",a:"Monteskiusz"},{t:"Wolno\u015B\u0107 i niewola",q:"Wolny bowiem jest cz\u0142owiek tylko wtedy, gdy jest samotny.",a:"Arthur Schopenhauer"},{t:"W\u0142adza",q:"Z punktu widzenia polityki prawda ma charakter despotyczny. Jest zatem znienawidzona przez despot\xF3w, s\u0142usznie obawiaj\u0105cych si\u0119 konkurencji ze strony si\u0142y przymusu, kt\xF3rej nie mog\u0105 sobie podporz\u0105dkowa\u0107.",a:"Hannah Arendt"},{t:"W\u0142adza",q:"Zwyci\u0119ski rewolucjonista zostaje m\u0119\u017Cem stanu, pokonany jest tylko zbrodniarzem.",a:"Erich Fromm"}];
-
-/***/ }),
-/* 188 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return authors; });
-var authors=["Wybierz autora...","Albert Camus","Albert Einstein","Andrzej Sapkowski","Anonim","Antoine de Saint-Exup\xE9ry","Arthur Schopenhauer","Bertrand Russell","Cyceron","Emil Zola","Erich Fromm","Eurypides","Fiodor Dostojewski","Francisco Goya","Fryderyk Engels","George Orwell","Hannah Arendt","Henry Ford","Horacy","Immanuel Kant","J.R.R. Tolkien","Jan Twardowski","J\xF3zef Stalin","Julian Tuwim","Karol Marks","Leonardo da Vinci","Lew To\u0142stoj","Mahatma Gandhi","Margaret Thatcher","Miko\u0142aj Rej","Monteskiusz","Napoleon Bonaparte","Nelson Mandela","Oscar Wild","Oscar Wilde","Owidiusz","Paulo Coelho","Ryszard Kapu\u015Bci\u0144ski","Stanis\u0142aw Lem","Stephen King","Steve Jobs","Terry Pratchett","William Szekspir","Wis\u0142awa Szymborska","Wolter"];
-
-/***/ }),
-/* 189 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return themes; });
-var themes=[{name:"Wybierz szablon...",color:"#242424",backgroundColor:""},{name:"Bia\u0142y",color:"#000000",backgroundColor:"#FFFFFF"},{name:"Niebieski",color:"#FFFFFF",backgroundColor:"#4E4CC3"},{name:"Pomara\u0144czowy",color:"#000000",backgroundColor:"#E78641"},{name:"R\xF3\u017Cowy",color:"#FBE1F9",backgroundColor:"#D939C9"},{name:"Zielony",color:"#E3B457",backgroundColor:"#395932"},{name:"Czarny",color:"#E3B457",backgroundColor:"#000000"}];
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return themesDB; });
+var themesDB = [{
+  name: "Wybierz szablon...",
+  color: "#242424",
+  backgroundColor: "#FFFFFF"
+}, {
+  name: "Biały",
+  color: "#000000",
+  backgroundColor: "#FFFFFF"
+}, {
+  name: "Niebieski",
+  color: "#FFFFFF",
+  backgroundColor: "#4E4CC3"
+}, {
+  name: "Pomarańczowy",
+  color: "#000000",
+  backgroundColor: "#E3A070"
+}, {
+  name: "Różowy",
+  color: "#FBE1F9",
+  backgroundColor: "#CB86C6"
+}, {
+  name: "Zielony",
+  color: "#E3B457",
+  backgroundColor: "#395932"
+}, {
+  name: "Czarny",
+  color: "#E3B457",
+  backgroundColor: "#000000"
+}];
 
 /***/ })
 /******/ ]);

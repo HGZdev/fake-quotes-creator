@@ -1,16 +1,5 @@
 @import './reset';
-/**
- * -----------------------------------------------------------------------
- *                                  Fonts
- * -----------------------------------------------------------------------
- */
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin-ext');
-/**
- * -----------------------------------------------------------------------
- *                                  Icons
- * -----------------------------------------------------------------------
- */
-
 /**
  * -----------------------------------------------------------------------
  *                              Color Palette
@@ -39,7 +28,7 @@ $width-base: (100% / $cols);
 	flex-direction: row;
 	flex-flow: column nowrap;
 
-	background-color: $c5;
+	background-color: $c4;
 
 	& > * {
 		flex: 0 0 auto;
@@ -77,9 +66,9 @@ $width-base: (100% / $cols);
  */
 
 section.header {
+	background-color: $c6;
 	.title {
 		padding: 1rem 0.5rem 0;
-		background-color: $c7;
 		color: $c2;
 
 		h1 {
@@ -89,11 +78,10 @@ section.header {
 
 	.subtitle {
 		padding: 1rem 0.5rem;
-		background-color: $c7;
 		color: $c2;
 
 		h2 {
-			font-size: 1.6rem;
+			font-size: 1.5rem;
 			line-height: 2rem;
 		}
 	}
@@ -103,7 +91,7 @@ section.creator {
 	// only main panle should flex-grow
 	flex: 1 0 auto;
 
-	section.dashboard {
+	section.controlbar {
 		form.row.inner {
 			padding: 1rem 0 0;
 
@@ -127,7 +115,8 @@ section.creator {
 				}
 
 				button {
-					background-color: $c4;
+					background-color: $c5;
+					color: $c2;
 				}
 			}
 		}
@@ -166,8 +155,8 @@ section.creator {
 }
 
 section.footer {
+	background-color: $c6;
 	.container.row {
-		background-color: $c6;
 		color: $c2;
 		font-weight: bold;
 		align-items: center;
@@ -211,9 +200,6 @@ section.footer {
 				/*"Pinterest logo" designed by Icomoon Free 2 from Flaticon*/
 				background-image: url('../../assets/images/pinterest.png');
 			}
-		}
-
-		.title {
 		}
 
 		.author {

@@ -1,0 +1,225 @@
+@import './reset';
+/**
+ * -----------------------------------------------------------------------
+ *                                  Fonts
+ * -----------------------------------------------------------------------
+ */
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&subset=latin-ext');
+/**
+ * -----------------------------------------------------------------------
+ *                                  Icons
+ * -----------------------------------------------------------------------
+ */
+
+/**
+ * -----------------------------------------------------------------------
+ *                              Color Palette
+ * -----------------------------------------------------------------------
+ */
+$c1: #000000;
+$c2: #ffffff;
+$c3: rgba(#000000, 0);
+$c4: #bdc5ff;
+$c5: #828ede;
+$c6: #4f5dbb;
+$c7: #36428f;
+$c8: #171c40;
+
+/**
+ * -----------------------------------------------------------------------
+ *                           Global grid settings
+ * -----------------------------------------------------------------------
+ */
+$cols: 12;
+$width-base: (100% / $cols);
+
+.main-container {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: row;
+	flex-flow: column nowrap;
+
+	background-color: $c5;
+
+	& > * {
+		flex: 0 0 auto;
+	}
+}
+
+.container {
+	width: 100%;
+	max-width: 60rem;
+	margin: 0 auto;
+}
+
+.row {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+
+[class*='col-'] {
+	width: 100%;
+	min-height: 1px;
+}
+@media only screen and (min-width: 480px) {
+	@for $i from 1 through $cols {
+		.col-#{$i} {
+			width: $width-base * $i;
+		}
+	}
+}
+/**
+ * -----------------------------------------------------------------------
+ *                            Sections settings
+ * -----------------------------------------------------------------------
+ */
+
+section.header {
+	.title {
+		padding: 1rem 0.5rem 0;
+		background-color: $c7;
+		color: $c2;
+
+		h1 {
+			font-size: 3rem;
+		}
+	}
+
+	.subtitle {
+		padding: 1rem 0.5rem;
+		background-color: $c7;
+		color: $c2;
+
+		h2 {
+			font-size: 1.6rem;
+			line-height: 2rem;
+		}
+	}
+}
+
+section.creator {
+	// only main panle should flex-grow
+	flex: 1 0 auto;
+
+	section.dashboard {
+		form.row.inner {
+			padding: 1rem 0 0;
+
+			& > div {
+				flex-grow: 1;
+				padding: 0 0.5rem;
+
+				span {
+					padding: 0.5rem;
+					display: block;
+					font-size: 1.1rem;
+				}
+
+				button,
+				select {
+					padding: 0.7rem 0.5rem;
+					width: 100%;
+					background-color: $c2;
+					border: 0;
+					border-radius: 20px;
+				}
+
+				button {
+					background-color: $c4;
+				}
+			}
+		}
+	}
+
+	section.board {
+		.container {
+			display: flex;
+			justify-content: center;
+			padding: 4rem 0.5rem;
+
+			.row {
+				width: 40rem;
+				box-shadow: 0 5px 23px 0 rgba(50, 50, 50, 0.82);
+				z-index: 999;
+
+				.quote p {
+					font-size: 1.5rem;
+					padding: 1rem;
+					line-height: 2rem;
+
+					span {
+						font-size: 1.5rem;
+						font-weight: bold;
+					}
+				}
+
+				.author h3 {
+					padding: 1rem;
+					font-weight: bold;
+					text-align: right;
+				}
+			}
+		}
+	}
+}
+
+section.footer {
+	.container.row {
+		background-color: $c6;
+		color: $c2;
+		font-weight: bold;
+		align-items: center;
+		text-align: center;
+
+		& > div {
+			padding: 0.5rem 0;
+		}
+
+		.social_media {
+			a {
+				display: inline-block;
+				padding: 0.2rem;
+			}
+
+			.social_icon {
+				display: inline-block;
+				height: 1.5rem;
+				width: 1.5rem;
+				background-position: center;
+				background-size: 1.5em 1.5em;
+				background-repeat: no-repeat;
+			}
+
+			.google {
+				/*"Google plus logo" designed by Glypho from Flaticon*/
+				background-image: url('../../assets/images/googleplus.png');
+			}
+
+			.facebook {
+				/*"Facebook logo" designed by Glypho from Flaticon*/
+				background-image: url('../../assets/images/facebook.png');
+			}
+
+			.twitter {
+				/*"Twitter icon" designed by Glypho from Flaticon*/
+				background-image: url('../../assets/images/twitter.png');
+			}
+
+			.pinterest {
+				/*"Pinterest logo" designed by Icomoon Free 2 from Flaticon*/
+				background-image: url('../../assets/images/pinterest.png');
+			}
+		}
+
+		.title {
+		}
+
+		.author {
+			a {
+				color: $c2;
+			}
+		}
+	}
+}

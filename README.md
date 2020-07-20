@@ -1,6 +1,6 @@
 # Fake Quotes Creator (Kreator Zmyślonych Cytatów)
 
-**Demo:** https://hgzdev.github.io/Fake_Quotes_Creator
+**Demo:** https://hgzdev.github.io/fake-quotes-creator
 
 This is a (prank) tool for creating simple posters with fake quotes of famous people.
 
